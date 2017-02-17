@@ -22,8 +22,7 @@ if (window.SCA === undefined) {
       var _this = _possibleConstructorReturn(this, (AddCardComponent.__proto__ || Object.getPrototypeOf(AddCardComponent)).call(this));
 
       _this.state = {
-        cards: [],
-        count: 0
+        cards: []
       };
       return _this;
     }
@@ -53,9 +52,6 @@ if (window.SCA === undefined) {
       value: function scramble(evt) {
         evt.preventDefault();
         SCA.Data.shuffleCards();
-        this.setState({
-          count: this.state.count++
-        });
         console.log('shuffled');
       }
     }, {

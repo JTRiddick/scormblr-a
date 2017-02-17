@@ -33,8 +33,10 @@ if (window.SCA === undefined) {
         this.changedCallback = function () {
           console.log('updating!');
           _this2.setState({
-            cards: SCA.Data.getCards()
+            cards: SCA.Data.getCards(),
+            count: SCA.Data.getCount()
           });
+          console.log('data arbitrary number,', SCA.Data.counter);
           console.log('show cards component callback got cards to state');
         };
 

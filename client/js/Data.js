@@ -3,6 +3,7 @@ if (window.SCA === undefined) {window.SCA = {};}
 (function() {
 
   var cards = [];
+  var counter = 0;
   var emitter = new Emitter;
 
   var data = {
@@ -22,11 +23,15 @@ if (window.SCA === undefined) {window.SCA = {};}
         let j = Math.floor(Math.random() * i);
         [cards[i-1],cards[j]] = [cards[j],cards[i-1]];
       }
+      counter+=1;
       emitter.emit('changed');
     },
     getCards: function() {
       return cards;
-    }
+    },
+    getCount: function(){
+      return counter
+    },
   }
 
   SCA.Data = data;

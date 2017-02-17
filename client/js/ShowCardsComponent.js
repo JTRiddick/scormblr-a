@@ -13,8 +13,10 @@ if (window.SCA === undefined) { window.SCA = {} ;}
       this.changedCallback = () => {
         console.log('updating!');
         this.setState({
-          cards: SCA.Data.getCards()
+          cards: SCA.Data.getCards(),
+          count: SCA.Data.getCount()
         })
+        console.log('data arbitrary number,',SCA.Data.counter);
         console.log('show cards component callback got cards to state');
       };
 

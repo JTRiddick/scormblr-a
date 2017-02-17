@@ -10,11 +10,11 @@ if (window.SCA === undefined ) { window.SCA = {}; }
     render () {
       return (<div>
         <header>
-          <h1>Event Emitter Example</h1>
+          <h1>Event Emitter Card Shuffler Test</h1>
           <SCA.AddCardComponent />
         </header>
 
-        <p>This is an example that uses an event emitter to keep multiple components in sync, without having to actually connect them explicitly.</p>
+        <p>An attempt to test out the event emitter</p>
 
         <SCA.ShowCardsComponent />
 

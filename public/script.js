@@ -39,14 +39,14 @@ if (window.SCA === undefined) {
             React.createElement(
               'h1',
               null,
-              'Event Emitter Example'
+              'Event Emitter Card Shuffler Test'
             ),
             React.createElement(SCA.AddCardComponent, null)
           ),
           React.createElement(
             'p',
             null,
-            'This is an example that uses an event emitter to keep multiple components in sync, without having to actually connect them explicitly.'
+            'An attempt to test out the event emitter'
           ),
           React.createElement(SCA.ShowCardsComponent, null),
           React.createElement('footer', null)

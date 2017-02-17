@@ -7,8 +7,7 @@ if (window.SCA === undefined) { window.SCA = {}; }
     constructor(){
       super();
       this.state={
-        cards:[],
-        count:0
+        cards:[]
       }
     }
 
@@ -31,9 +30,6 @@ if (window.SCA === undefined) { window.SCA = {}; }
     scramble(evt){
       evt.preventDefault();
       SCA.Data.shuffleCards();
-      this.setState({
-        count:this.state.count++
-      })
       console.log('shuffled');
     }
 

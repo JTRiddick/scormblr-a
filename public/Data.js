@@ -7,6 +7,7 @@ if (window.SCA === undefined) {
 (function () {
 
   var cards = [];
+  var counter = 0;
   var emitter = new Emitter();
 
   var data = {
@@ -28,10 +29,14 @@ if (window.SCA === undefined) {
         cards[i - 1] = _ref[0];
         cards[j] = _ref[1];
       }
+      counter += 1;
       emitter.emit('changed');
     },
     getCards: function getCards() {
       return cards;
+    },
+    getCount: function getCount() {
+      return counter;
     }
   };
 
