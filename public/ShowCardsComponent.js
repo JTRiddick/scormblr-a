@@ -13,50 +13,83 @@ if (window.SCA === undefined) {
 }
 
 (function () {
+  var ShowCardsComponent = function (_React$Component) {
+    _inherits(ShowCardsComponent, _React$Component);
 
-  console.log('js on page!');
+    function ShowCardsComponent() {
+      _classCallCheck(this, ShowCardsComponent);
 
-  var mountNode = document.querySelector('#react-root');
+      var _this = _possibleConstructorReturn(this, (ShowCardsComponent.__proto__ || Object.getPrototypeOf(ShowCardsComponent)).call(this));
 
-  var AppComponent = function (_React$Component) {
-    _inherits(AppComponent, _React$Component);
-
-    function AppComponent() {
-      _classCallCheck(this, AppComponent);
-
-      return _possibleConstructorReturn(this, (AppComponent.__proto__ || Object.getPrototypeOf(AppComponent)).apply(this, arguments));
+      _this.state = { cards: [], count: 0 };
+      return _this;
     }
 
-    _createClass(AppComponent, [{
+    _createClass(ShowCardsComponent, [{
+      key: 'componentDidMount',
+      value: function componentDidMount() {
+        var _this2 = this;
+
+        this.changedCallback = function () {
+          console.log('updating!');
+          _this2.setState({
+            cards: SCA.Data.getCards()
+          });
+          console.log('show cards component callback got cards to state');
+        };
+
+        SCA.Data.emitter.on('changed', this.changedCallback);
+      }
+    }, {
+      key: 'componentWillUnmount',
+      value: function componentWillUnmount() {
+        console.log('unmounting');
+        EE.Data.emitter.off('changed', this.changedCallback);
+      }
+    }, {
+      key: 'removeAtIndex',
+      value: function removeAtIndex(i) {
+        SCA.Data.removeCard(i);
+        console.log('removing @', i);
+      }
+    }, {
       key: 'render',
       value: function render() {
+        var _this3 = this;
+
         return React.createElement(
           'div',
           null,
           React.createElement(
-            'header',
-            null,
+            'div',
+            { className: 'cardstack' },
             React.createElement(
-              'h1',
+              'ul',
               null,
-              'Event Emitter Example'
-            ),
-            React.createElement(SCA.AddCardComponent, null)
+              this.state.cards.map(function (x, index) {
+                return React.createElement(
+                  'li',
+                  { key: index, onClick: function onClick() {
+                      _this3.removeAtIndex(index);
+                    } },
+                  x
+                );
+              })
+            )
           ),
           React.createElement(
             'p',
             null,
-            'This is an example that uses an event emitter to keep multiple components in sync, without having to actually connect them explicitly.'
-          ),
-          React.createElement(SCA.ShowCardsComponent, null),
-          React.createElement('footer', null)
+            'Times Shuffled: ',
+            this.state.count
+          )
         );
       }
     }]);
 
-    return AppComponent;
+    return ShowCardsComponent;
   }(React.Component);
 
-  ReactDOM.render(React.createElement(AppComponent, null), mountNode);
+  SCA.ShowCardsComponent = ShowCardsComponent;
 })();
-//# sourceMappingURL=script.js.map
+//# sourceMappingURL=ShowCardsComponent.js.map
