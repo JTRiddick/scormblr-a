@@ -1,1 +1,11 @@
-node_modules
+/node_modules
+bundle.js
+npm-debug.log
+.DS_Store
+.babel_cache/
+/build
+/src/static/js/build.js
+
+# IntelliJ
+*.iml
+/.idea
