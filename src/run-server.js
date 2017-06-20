@@ -1,5 +1,5 @@
 require('babel-core/register')({
-  presets: ['es2015-node5', 'stage-0'],
+  presets: ['es2015-node6', 'stage-0'],
   plugins: ['transform-decorators-legacy'] //was needed to support decorators
 })
 

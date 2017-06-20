@@ -6,6 +6,7 @@ import Express from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter as Router } from 'react-router-dom';
+import morgan from 'morgan';
 import { App } from './components/App';
 
 
@@ -18,6 +19,9 @@ app.set('views', path.join(__dirname, 'views'));
 
 // define the folder that will be used for static assets
 app.use(Express.static(path.join(__dirname, 'static')));
+
+//logging
+app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'));
 
 // universal routing and rendering
 app.get('*', (req, res) => {
