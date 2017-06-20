@@ -4,6 +4,7 @@ import path from 'path';
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const SplitByPathPlugin = require('webpack-split-by-path');
+const autoprefixer = require('autoprefixer');
 
 require.extensions['.scss'] = () => { return; }; require.extensions['.css'] = () => { return; };
 
@@ -11,7 +12,7 @@ let extractSCSS = new ExtractTextPlugin({
   filename:"style.scss",
   allChunks:true
 })
-let extractCSS = new ExtractTextPlugin('../style.css');
+let extractCSS = new ExtractTextPlugin('../css/style.css');
 //moving css from /static/css/style.css to /static/ fixed stylesheet link???
 const uglifyJs = new UglifyJSPlugin({
   sourceMap: true
@@ -38,10 +39,10 @@ const config = {
       },
       {
         test:/(\.scss$|.css$)/,
-        include: path.join(__dirname, 'src','static','sass'),
+        include: path.join(__dirname, 'src','sass'),
         exclude: /node_modules/,
-        // loader:ExtractTextPlugin.extract('css-loader!sass-loader')
-        loader: extractCSS.extract('css-loader?modules=true!sass-loader?sourceMap=true?')
+        //postcss loader goes before sass-loader
+        loader: extractCSS.extract('css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!sass-loader?sourceMap=true')
       },
     ],
   },
@@ -58,7 +59,20 @@ const config = {
       beautify:false,
       dead_code:true
     }),
-    new ExtractTextPlugin('../style.css')
+    // new webpack.LoaderOptionsPlugin({
+    //   options: {
+    //     postcss: [
+    //       autoprefixer({
+    //         browsers: [
+    //           'last 3 version',
+    //           'ie >= 10',
+    //         ],
+    //       }),
+    //     ],
+    //     context: path.join(__dirname, 'src'),
+    //   },
+    // }),
+    new ExtractTextPlugin('../css/style.css')
   ]
 };
 

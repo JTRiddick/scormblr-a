@@ -9,7 +9,7 @@ import reducers from '../reducers';
 import Index from './index';
 import About from './about';
 import Layout from './Layout';
-import NotFound from './NotFound';
+import NotFoundPage from './NotFound';
 
 const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
@@ -17,8 +17,9 @@ export const App = () => (
   <Provider store={createStoreWithMiddleware(reducers)}>
     <Layout>
       <Switch>
-        <Route path="/about" component={About} />
-        <Route path="/" component={Index} />
+        <Route exact path="/about" component={About} />
+        <Route exact path="/" component={Index} />
+        <Route component={NotFoundPage} />
       </Switch>
     </Layout>
   </Provider>)

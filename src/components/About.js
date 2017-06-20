@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import style from '../static/sass/style.scss';
+import style from '../sass/style.scss';
 
 export default class About extends Component{
   constructor(){

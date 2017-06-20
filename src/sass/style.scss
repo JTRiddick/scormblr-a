@@ -1,0 +1,46 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+
+:global{
+  html{
+    background-color: lightgray;
+  }
+  .app-container{
+    border: 1px solid black;
+  }
+  .app-content{
+    border: 1px solid darkgray;
+  }
+  .logo{
+    :local{
+    animation: App-logo-spin infinite 20s linear;
+    height: 80px;
+   }
+  }
+  @keyframes App-logo-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+   }
+}
+
+:local{
+
+}
+
+.test{
+ font-family:sans-serif;
+ margin: 0;
+ padding: 0;
+ background-color:black;
+ color:white;
+}
+
+.about{
+ font-family:monospace;
+ h1{
+   text-shadow: 2px 2px 2px;
+ }
+}
+
+.orangeBg{
+  background-color: #F99206;
+}

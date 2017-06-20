@@ -23,7 +23,6 @@ app.use(Express.static(path.join(__dirname, 'static')));
 app.get('*', (req, res) => {
   let markup = '';
   let status = 200;
-  // let styleSheet = [...css].join('');
 
   if (process.env.UNIVERSAL) {
     const context = {};
