@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 export class NotFoundPage extends React.Component {
   componentWillMount() {
     const { staticContext } = this.props;
+    console.log('static context : ', { staticContext });
+    console.log('this.props : ', this.props );
     if (staticContext) {
       staticContext.is404 = true;
     }

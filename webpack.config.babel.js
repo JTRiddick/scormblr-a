@@ -44,9 +44,29 @@ const config = {
         //postcss loader goes before sass-loader
         loader: extractCSS.extract('css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!sass-loader?sourceMap=true')
       },
+      {
+        test:/(\.png$|.jpg$|.gif$)/,
+        use:[{
+          loader: 'url-loader',
+          options: { limit:10000 }
+        }]
+      },
     ],
   },
   plugins:[
+    new webpack.LoaderOptionsPlugin({
+      options: {
+        postcss: [
+          autoprefixer({
+            browsers: [
+              'last 3 version',
+              'ie >= 10',
+            ],
+          }),
+        ],
+        context: path.join(__dirname, 'src'),
+      },
+    }),
     extractCSS,
     extractSCSS,
     new webpack.DefinePlugin({
@@ -59,19 +79,6 @@ const config = {
       beautify:false,
       dead_code:true
     }),
-    // new webpack.LoaderOptionsPlugin({
-    //   options: {
-    //     postcss: [
-    //       autoprefixer({
-    //         browsers: [
-    //           'last 3 version',
-    //           'ie >= 10',
-    //         ],
-    //       }),
-    //     ],
-    //     context: path.join(__dirname, 'src'),
-    //   },
-    // }),
     new ExtractTextPlugin('../css/style.css')
   ]
 };

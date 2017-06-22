@@ -28,6 +28,7 @@ app.get('*', (req, res) => {
   let markup = '';
   let status = 200;
 
+
   if (process.env.UNIVERSAL) {
     const context = {};
     markup = renderToString(
@@ -35,6 +36,9 @@ app.get('*', (req, res) => {
         <App />
       </Router>,
     );
+
+    console.log('context ??', context);
+
 
     // context.url will contain the URL to redirect to if a <Redirect> was used
     if (context.url) {

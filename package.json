@@ -1,12 +1,12 @@
 {
   "name": "Scormblr-A",
   "version": "0.0.1",
-  "description": "Redux Express Webpack Isomorphic ",
+  "description": "Scormbl Your Rumpus",
   "main": "server.js",
   "scripts": {
     "start:x": "npm run build && export UNIVERSAL=true && babel-node src/run-server.js",
     "start": "npm run build && babel-node src/run-server.js",
-    "start:dev": "export NODE_ENV=development && npm run build:dev && nodemon --exec babel-node -- src/server.js",
+    "start:dev": "export NODE_ENV=development && npm run build:dev && nodemon --exec babel-node -- src/run-server.js",
     "start:universal": "export UNIVERSAL=true && npm run start",
     "start:dev:universal": "export NODE_ENV=development && export UNIVERSAL=true && npm run start:dev",
     "build": "NODE_ENV=production webpack -p",
@@ -14,7 +14,7 @@
     "build:dev:watch": "webpack -d --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "JTR",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.16.2",
@@ -45,11 +45,13 @@
     "chalk": "^1.1.3",
     "css-loader": "^0.28.4",
     "extract-text-webpack-plugin": "^2.1.2",
+    "file-loader": "^0.11.2",
     "http-server": "^0.10.0",
     "jsdom": "^11.0.0",
     "mocha": "^3.4.2",
     "morgan": "^1.8.2",
     "node-sass": "^4.5.3",
+    "nodemon": "^1.11.0",
     "postcss-loader": "^2.0.6",
     "promise": "^8.0.0",
     "react-addons-test-utils": "^15.6.0",
@@ -57,6 +59,7 @@
     "style-loader": "^0.18.2",
     "uglify-js": "git://github.com/mishoo/UglifyJS2#harmony-v2.8.22",
     "uglifyjs-webpack-plugin": "^0.4.6",
+    "url-loader": "^0.5.9",
     "webpack": "^3.0.0",
     "webpack-split-by-path": "^2.0.0"
   },
