@@ -22,6 +22,7 @@ export const App = () => (
         <Route component={NotFoundPage} />
       </Switch>
     </Layout>
-  </Provider>)
+  </Provider>
+);
 
 export default App;

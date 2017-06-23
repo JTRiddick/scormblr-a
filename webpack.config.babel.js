@@ -1,10 +1,10 @@
 // Sourcemap babel-loader scss loader uglifyjs hmr hml
 import webpack from 'webpack';
 import path from 'path';
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const SplitByPathPlugin = require('webpack-split-by-path');
-const autoprefixer = require('autoprefixer');
+import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import SplitByPathPlugin from 'webpack-split-by-path';
+import autoprefixer from 'autoprefixer';
 
 require.extensions['.scss'] = () => { return; }; require.extensions['.css'] = () => { return; };
 
@@ -69,6 +69,7 @@ const config = {
     }),
     extractCSS,
     extractSCSS,
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV' : JSON.stringify(process.env.NODE_ENV)
     }),
