@@ -1,11 +1,12 @@
 import React from 'react';
-import store from '../store.js';
+import reducer from '../reducers/index';
+import store from '../store';
 
 class Clicker extends React.Component {
 
   constructor(){
     super();
-
+    // console.log('clicker props', this);
     this.state = store.getState();
   }
 
@@ -33,7 +34,8 @@ class Clicker extends React.Component {
     return(
       <div>
         clicker
-        <p>{this.state.number}</p>
+        {console.log('state of clicker is : ',this.state)}
+        <p>{this.state.number.number}</p>
         <button onClick={(evt)=>this.handleClick(evt)}>increase that number</button>
         <button onClick={()=> this.handleBigClick()}>increase by a lot </button>
       </div>

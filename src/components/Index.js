@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Clicker from './Clicker.js';
-import store from '../store.js';
 
 import style from '../sass/style.scss';
 
@@ -10,7 +9,7 @@ export default class Index extends Component {
     return (
       <div className={style.test}>
         <h1>I am a heading</h1>
-        <Clicker />
+        <Clicker/>
       </div>
     );
   }
