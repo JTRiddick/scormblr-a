@@ -22,8 +22,7 @@ class Clicker extends React.Component {
     this.unsub();
   }
 
-  handleClick(evt){
-    evt.preventDefault();
+  handleClick(){
     store.dispatch({ type: 'INCREMENT' });
   }
 
@@ -37,7 +36,7 @@ class Clicker extends React.Component {
         clicker
         {console.log('state of clicker is : ',this.state)}
         <p>{this.state.number.number}</p>
-        <button onClick={(evt)=>this.handleClick(evt)}>increase that number</button>
+        <button onClick={()=>this.handleClick()}>increase that number</button>
         <button onClick={()=> this.handleBigClick()}>increase by a lot </button>
       </div>
     )

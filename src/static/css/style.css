@@ -33,7 +33,9 @@
   background-color: #F99206; }
 
 #style__Cards___1EpSz {
-  background-color: slategray; }
+  background-color: slategray;
+  margin: 0 auto;
+  padding: 2em; }
   #style__Cards___1EpSz table {
     padding: 1em;
     margin: 0 auto; }

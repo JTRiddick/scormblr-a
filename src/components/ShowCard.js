@@ -1,6 +1,5 @@
 import React from 'react';
 
-import store from '../store';
 // could this functional component render all cards from array of objects?
 const ShowCard = (props) => {
   console.log('show card ',props);
