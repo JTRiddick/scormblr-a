@@ -7,7 +7,7 @@ const ShowCard = (props) => {
   return(
     <tr>
       <td>{props.name}</td>
-      <td>{props.text}</td>
+      <td>{props.text} + {props.number}</td>
     </tr>
   );
 

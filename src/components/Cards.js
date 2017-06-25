@@ -5,6 +5,7 @@ import style from '../sass/style.scss';
 
 import ShowCard from './ShowCard';
 import WriteCard from './WriteCard';
+import Clicker from './Clicker';
 
 class Cards extends React.Component {
 
@@ -29,12 +30,13 @@ class Cards extends React.Component {
     const currentCards = this.state.card.cards;
 
     console.log('Cards component render ',currentCards);
-    return (<div id={style.Cards}>
-      <div>
+    return (<div >
+      <Clicker />
+      <div id={style.Cards}>
         <table>
           <tbody>
             {currentCards.map((card,i) => {
-              return <ShowCard key={i} name={card.name} text={card.text}/>
+              return <ShowCard key={i} name={card.name} text={card.text} number={this.state.number.number}/>
             })}
           </tbody>
         </table>
