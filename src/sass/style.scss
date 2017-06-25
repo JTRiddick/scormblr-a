@@ -44,3 +44,21 @@
 .orangeBg{
   background-color: #F99206;
 }
+
+#Cards{
+  background-color:slategray;
+  margin: 0 auto;
+  padding: 2em;
+  table{
+    padding:1em;
+    margin:0 auto;
+  }
+  tr{
+    border: 2px solid black;
+  }
+  td{
+    border:1px solid black;
+    padding: 1em;
+    margin:1em;
+  }
+}

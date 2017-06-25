@@ -7,6 +7,7 @@ import promise from 'redux-promise';
 
 import Index from './index';
 import About from './about';
+import Cards from './Cards';
 import Layout from './Layout';
 import NotFoundPage from './NotFound';
 
@@ -18,6 +19,7 @@ export const App = () => (
   // <Provider store={createStoreWithMiddleware(reducers)}>
     <Layout>
       <Switch>
+        <Route exact path="/cards" component={Cards} />
         <Route exact path="/about" component={About} />
         <Route exact path="/" component={Index}/>
         <Route component={NotFoundPage} />

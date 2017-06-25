@@ -1,6 +1,7 @@
 import React from 'react';
-import reducer from '../reducers/index';
 import store from '../store';
+
+import style from '../sass/style.scss';
 
 class Clicker extends React.Component {
 

@@ -31,3 +31,15 @@
 
 .style__orangeBg___VA1O4 {
   background-color: #F99206; }
+
+#style__Cards___1EpSz {
+  background-color: slategray; }
+  #style__Cards___1EpSz table {
+    padding: 1em;
+    margin: 0 auto; }
+  #style__Cards___1EpSz tr {
+    border: 2px solid black; }
+  #style__Cards___1EpSz td {
+    border: 1px solid black;
+    padding: 1em;
+    margin: 1em; }
