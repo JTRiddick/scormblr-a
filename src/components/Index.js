@@ -9,7 +9,6 @@ export default class Index extends Component {
     return (
       <div className={style.test}>
         <h1>I am a heading</h1>
-        <Clicker/>
       </div>
     );
   }

@@ -7,8 +7,9 @@ import promise from 'redux-promise';
 
 import store from '../reducers/store';
 
-import Index from './index';
-import About from './about';
+import Index from './Index';
+import About from './About';
+import Clicker from './Clicker';
 import Cards from './Cards';
 import Layout from './Layout';
 import NotFoundPage from './NotFound';
@@ -28,6 +29,7 @@ export class App extends React.Component {
       // <Provider store={createStoreWithMiddleware(reducers)}>
         <Layout>
           <Switch>
+            <Route exact path="/clicker" component={Clicker} />
             <Route exact path="/cards" component={Cards} />
             <Route exact path="/about" component={About} />
             <Route exact path="/" component={Index}/>

@@ -29,7 +29,7 @@ class WriteCard extends React.Component {
 
   render(){
     return (
-      <div>
+      <div id={style.cardForm}>
         <h4>Write on this</h4>
         <form onSubmit = {(evt)=>this.addCardClick(evt)}>
           <input value={this.state.name}

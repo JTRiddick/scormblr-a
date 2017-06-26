@@ -22,10 +22,12 @@ html {
 
 .style__test___2bKzv {
   font-family: sans-serif;
-  margin: 0;
-  padding: 0;
+  margin: 0 auto;
+  padding: 2em;
   background-color: black;
   color: white; }
+  .style__test___2bKzv button {
+    color: #a1a1a1; }
 
 .style__about___2XK-P {
   font-family: monospace; }
@@ -45,6 +47,17 @@ html {
   #style__Cards___1EpSz tr {
     border: 2px solid black; }
   #style__Cards___1EpSz td {
+    background-color: #e3e3e3;
     border: 1px solid black;
     padding: 1em;
     margin: 1em; }
+
+#style__cardForm___1v0HE {
+  margin: 3em 2em; }
+
+#style__NavPrimary___38hkU {
+  background-color: #e3e3e3;
+  display: inline-block;
+  width: 80%;
+  position: relative;
+  top: 1.225em; }
