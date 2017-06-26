@@ -43,14 +43,18 @@ html {
   padding: 2em; }
   #style__Cards___1EpSz table {
     padding: 1em;
-    margin: 0 auto; }
+    margin: 0 auto;
+    width: 80%; }
   #style__Cards___1EpSz tr {
-    border: 2px solid black; }
+    float: left;
+    clear: none;
+    width: 20%;
+    margin: 1em; }
   #style__Cards___1EpSz td {
     background-color: #e3e3e3;
     border: 1px solid black;
     padding: 1em;
-    margin: 1em; }
+    margin: 2em; }
 
 #style__cardForm___1v0HE {
   margin: 3em 2em; }

@@ -1,8 +1,5 @@
 const initialState = {
-  cards:[{
-    name: 'blank',
-    text: 'none'
-  }]
+  cards:[]
 }
 
 export default function cardReducer(state = initialState,action){

@@ -20,24 +20,57 @@ class Cards extends React.Component {
     });
     //returns unsubscriber when component unmounts
     // console.log(this.state.card.cards);
+
   }
 
   componentWillUnmount(){
     this.unsub();
   }
 
-  render(){
-    const currentCards = this.state.card.cards;
+  cardScramble(cards,n){
+    let newCards = [];
 
-    console.log('Cards component render ',currentCards);
+      cards.forEach((card,i)=>{
+        let rngI = Math.floor(Math.random() * cards.length);
+        let tI = cards[i];
+        cards[i] = cards[rngI];
+        cards[rngI] = tI;
+        if(n < 1){
+          newCards = cards;
+          return newCards;
+        }else{
+          n = n - 1;
+          this.cardScramble(cards,n);
+        }
+        return newCards;
+      })
+
+  }
+
+  render(){
+    var currentCards = [];
+    if (this.state.card.cards){
+      currentCards = this.cardScramble(this.state.card.cards,this.state.number.number);
+      if(!currentCards === 'undefined'){
+        console.log('scormbling ');
+        currentCards = currentCards.map((card,i)=>{
+          return <ShowCard key={i} name={card.name} text={card.text} number={i}/>
+        })
+      }else{
+        currentCards = this.state.card.cards.map((card,i)=>{
+          return <ShowCard key={i} name={card.name} text={card.text} number={i}/>
+        })
+      }
+    }else{
+      console.log('nothing to card show');
+    }
+
     return (<div >
       <Clicker />
       <div id={style.Cards}>
         <table>
           <tbody>
-            {currentCards.map((card,i) => {
-              return <ShowCard key={i} name={card.name} text={card.text} number={this.state.number.number}/>
-            })}
+            {currentCards}
           </tbody>
         </table>
       </div>
