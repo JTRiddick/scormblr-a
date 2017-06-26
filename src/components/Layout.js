@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import Navigation from './Navigation';
+
 import styles from '../sass/style.scss';
 
 export const Layout = props => (
@@ -9,6 +11,8 @@ export const Layout = props => (
       <Link to="/">
         <img className="logo" src="/img/logo.svg" alt="Sitelogo" />
       </Link>
+      <Navigation/>
+      {console.log('layout props: ',props)}
     </header>
     <div className="app-content">{props.children}</div>
     <footer>

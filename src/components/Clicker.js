@@ -1,5 +1,5 @@
 import React from 'react';
-import store from '../store';
+import store from '../reducers/store';
 
 import style from '../sass/style.scss';
 
@@ -32,7 +32,7 @@ class Clicker extends React.Component {
 
   render(){
     return(
-      <div>
+      <div className={style.test}>
         clicker
         {console.log('state of clicker is : ',this.state)}
         <p>{this.state.number.number}</p>

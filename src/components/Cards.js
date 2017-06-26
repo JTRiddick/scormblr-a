@@ -1,6 +1,6 @@
 import React from 'react';
 
-import store from '../store';
+import store from '../reducers/store';
 import style from '../sass/style.scss';
 
 import ShowCard from './ShowCard';
