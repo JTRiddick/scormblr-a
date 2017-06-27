@@ -27,30 +27,15 @@ class Cards extends React.Component {
     this.unsub();
   }
 
-  cardScramble(cards,n){
-    let newCards = [];
 
-      cards.forEach((card,i)=>{
-        let rngI = Math.floor(Math.random() * cards.length);
-        let tI = cards[i];
-        cards[i] = cards[rngI];
-        cards[rngI] = tI;
-        if(n < 1){
-          newCards = cards;
-          return newCards;
-        }else{
-          n = n - 1;
-          this.cardScramble(cards,n);
-        }
-        return newCards;
-      })
-
+  scormblPress(){
+    store.dispatch({type:'SCRAMBLE',iterations:this.state.number.number})
   }
 
   render(){
     var currentCards = [];
     if (this.state.card.cards){
-      currentCards = this.cardScramble(this.state.card.cards,this.state.number.number);
+      currentCards = this.state.card.cards;
       if(!currentCards === 'undefined'){
         console.log('scormbling ');
         currentCards = currentCards.map((card,i)=>{
@@ -73,6 +58,7 @@ class Cards extends React.Component {
             {currentCards}
           </tbody>
         </table>
+        <button onClick={()=>this.scormblPress()}>Scormbl</button>
       </div>
       <br/>
       <WriteCard />
