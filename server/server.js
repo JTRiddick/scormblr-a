@@ -18,7 +18,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join('src', 'views'));
 
 // define the folder that will be used for static assets
-app.use(Express.static(path.join('src', 'static')));
+app.use(Express.static(path.join('src', 'public')));
 
 //logging
 app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'));
