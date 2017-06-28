@@ -1,8 +1,13 @@
-# redux-express-template
+# Scormblr-A
+
+## built to refine redux-express-template
 Simple starter for isomorphic Redux on express
+Now working on AWS???
 
 
 ###
 Trouble:
--304 error on navigation
+-304 response on navigation
 -need run-server.js to run server
+-lots of babel presets and unused modules
+-redux store not connected to server
