@@ -1,20 +1,28 @@
 {
   "name": "Scormblr-A",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Scormbl Your Rumpus",
   "main": "server.js",
   "scripts": {
     "start": "npm run build && node server/run-server.js",
-    "start:aws": "npm rebuild node-sass && webpack && node server/run-server.js",
+    "start:aws": "export NODE_ENV=production && npm rebuild node-sass && webpack && node server/run-server.js",
     "start:dev": "export NODE_ENV=development && npm run build:dev && nodemon --exec node -- server/run-server.js",
     "start:universal": "export UNIVERSAL=true && npm run start",
-    "start:universal:aws": "export UNIVERSAL=true && npm run start:aws",
+    "start:universal:aws": "export NODE_ENV=production && export UNIVERSAL=true && npm run start:aws",
     "start:dev:universal": "export NODE_ENV=development && export UNIVERSAL=true && npm run start:dev",
     "build": "NODE_ENV=production webpack -p",
     "build:dev": "webpack -d",
     "build:dev:watch": "webpack -d --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+  "type": "git",
+  "url": "git+https://github.com/JTRiddick/scormblr-a.git"
+  },
+  "bugs": {
+  "url": "https://github.com/JTRiddick/scormblr-a/issues"
+  },
+  "homepage": "https://github.com/JTRiddick/scormblr-a#readme",
   "author": "JTR",
   "license": "ISC",
   "dependencies": {

@@ -22,12 +22,20 @@ class Clicker extends React.Component {
     this.unsub();
   }
 
-  handleClick(){
+  handleClickAdd(){
     store.dispatch({ type: 'INCREMENT' });
   }
 
-  handleBigClick(){
+  handleClickSub(){
+    store.dispatch({ type: 'DECREMENT' })
+  }
+
+  handleBigClickAdd(){
     store.dispatch({ type: 'INCREMENT_WITH_AMOUNT', value: 5});
+  }
+
+  handleBigClickSub(){
+    store.dispatch({ type: 'DECREMENT_WITH_AMOUNT', value: 5});
   }
 
   render(){
@@ -36,8 +44,10 @@ class Clicker extends React.Component {
         clicker
         {console.log('state of clicker is : ',this.state)}
         <p>{this.state.number.number}</p>
-        <button onClick={()=>this.handleClick()}>increase that number</button>
-        <button onClick={()=> this.handleBigClick()}>increase by a lot </button>
+        <button onClick={()=>this.handleClickAdd()}>increase that number</button>
+        <button onClick={()=>this.handleBigClickAdd()}>increase that number More</button>
+        <button onClick={()=> this.handleClickSub()}>decrease that number</button>
+        <button onClick={()=> this.handleBigClickSub()}>decrease that number More</button>
       </div>
     )
   }

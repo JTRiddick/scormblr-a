@@ -17,6 +17,8 @@
     :local{
     animation: App-logo-spin infinite 20s linear;
     height: 80px;
+    position: relative;
+    bottom: 1em;
    }
   }
   @keyframes App-logo-spin {
@@ -37,7 +39,8 @@
  color:white;
 
   button{
-    color:$darkerGrau
+    color:$rot;
+    background-color: $wit;
   }
 }
 
