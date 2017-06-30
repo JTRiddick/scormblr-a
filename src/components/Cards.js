@@ -33,30 +33,13 @@ class Cards extends React.Component {
   }
 
   render(){
-    var currentCards = [];
-    if (this.state.card.cards){
-      currentCards = this.state.card.cards;
-      if(!currentCards === 'undefined'){
-        console.log('scormbling ');
-        currentCards = currentCards.map((card,i)=>{
-          return <ShowCard key={i} name={card.name} text={card.text} number={i}/>
-        })
-      }else{
-        currentCards = this.state.card.cards.map((card,i)=>{
-          return <ShowCard key={i} name={card.name} text={card.text} number={i}/>
-        })
-      }
-    }else{
-      console.log('nothing to card show');
-    }
+
 
     return (<div >
       <Clicker />
       <div id={style.Cards}>
         <table>
-          <tbody>
-            {currentCards}
-          </tbody>
+          <ShowCard cards={this.state.card.cards}/>
         </table>
         <button onClick={()=>this.scormblPress()}>Scormbl</button>
       </div>

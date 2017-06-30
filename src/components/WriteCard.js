@@ -27,6 +27,11 @@ class WriteCard extends React.Component {
     store.dispatch({type:'ADD_CARD', name:this.state.name, text:this.state.text});
   }
 
+  removeCardClick(){
+    console.log('removed a card');
+    store.dispatch({type:'REMOVE_CARD'});
+  }
+
   render(){
     return (
       <div id={style.cardForm}>
@@ -38,7 +43,7 @@ class WriteCard extends React.Component {
           onChange = {(evt) => this.setState({text: evt.target.value})}/>
           <button>Add Card</button>
         </form>
-
+          <button onClick={()=> this.removeCardClick()}>Remove Card</button>
       </div>
     )
   }
