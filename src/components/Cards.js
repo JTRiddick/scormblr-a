@@ -1,6 +1,6 @@
 import React from 'react';
-
-import store from '../reducers/store';
+import { connect } from 'react-redux';
+// import store from '../reducers/store';
 import style from '../sass/style.scss';
 
 import ShowCard from './ShowCard';
@@ -11,25 +11,25 @@ class Cards extends React.Component {
 
   constructor(){
     super();
-    this.state = store.getState();
+    // this.state = store.getState();
   }
 
   componentDidMount() {
-    this.unsub = store.subscribe(() => {
-      this.setState(store.getState());
-    });
+    // this.unsub = store.subscribe(() => {
+    //   this.setState(store.getState());
+    // });
     //returns unsubscriber when component unmounts
     // console.log(this.state.card.cards);
-
+    let { dispatch } = this.props;
   }
 
   componentWillUnmount(){
-    this.unsub();
+    // this.unsub();
   }
 
 
   scormblPress(){
-    store.dispatch({type:'SCRAMBLE',iterations:this.state.number.number})
+    dispatch({type:'SCRAMBLE',iterations:this.state.number.number})
   }
 
   render(){
@@ -50,4 +50,11 @@ class Cards extends React.Component {
 
 }
 
-export default Cards;
+// export default Cards;
+
+const mapStateToProps = state => {
+  return {
+    card:state.card
+  }
+}
+export default connect(mapStateToProps)(Cards);

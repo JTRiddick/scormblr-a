@@ -1,5 +1,6 @@
-import React from 'react';
-import store from '../reducers/store';
+import React,{bindActionCreators} from 'react';
+import {connect} from 'react-redux';
+// import store from '../reducers/store';
 
 import style from '../sass/style.scss';
 
@@ -8,34 +9,42 @@ class Clicker extends React.Component {
   constructor(){
     super();
     // console.log('clicker props', this);
-    this.state = store.getState();
+    // this.state = store.getState();
   }
 
   componentDidMount() {
-    this.unsub = store.subscribe(() => {
-      this.setState(store.getState());
-    });
+    // this.unsub = store.subscribe(() => {
+    //   this.setState(store.getState());
+    // });
     //returns unsubscriber when component unmounts
+    console.log('clicker component did mount :', this.props);
+    this.state = this.props.number;
+    let { dispatch } = this.props;
   }
 
   componentWillUnmount(){
-    this.unsub();
+    // this.unsub();
   }
 
   handleClickAdd(){
-    store.dispatch({ type: 'INCREMENT' });
+    dispatch({ type: 'INCREMENT' });
+    this.setState({number:this.props.number});
   }
 
   handleClickSub(){
-    store.dispatch({ type: 'DECREMENT' })
+    dispatch({ type: 'DECREMENT' });
+    this.setState({number:this.props.number});
+
   }
 
   handleBigClickAdd(){
-    store.dispatch({ type: 'INCREMENT_WITH_AMOUNT', value: 5});
+    dispatch({ type: 'INCREMENT_WITH_AMOUNT', value: 5});
+    this.setState({number:this.props.number});
   }
 
   handleBigClickSub(){
-    store.dispatch({ type: 'DECREMENT_WITH_AMOUNT', value: 5});
+    dispatch({ type: 'DECREMENT_WITH_AMOUNT', value: 5});
+    this.setState({number:this.props.number});
   }
 
   render(){
@@ -43,7 +52,7 @@ class Clicker extends React.Component {
       <div className={style.test}>
         clicker
         {console.log('state of clicker is : ',this.state)}
-        <p>{this.state.number.number}</p>
+        <p>{this.state ? this.state.number : 0}</p>
         <button onClick={()=>this.handleClickAdd()}>increase that number</button>
         <button onClick={()=>this.handleBigClickAdd()}>increase that number More</button>
         <button onClick={()=> this.handleClickSub()}>decrease that number</button>
@@ -53,4 +62,10 @@ class Clicker extends React.Component {
   }
 }
 
-export default Clicker;
+const mapStateToProps = state => {
+  console.log('clicker mapstate to props state :', state);
+  return {
+    number:state.number
+  }
+}
+export default connect(mapStateToProps)(Clicker);

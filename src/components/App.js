@@ -5,7 +5,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Route, Switch } from 'react-router-dom';
 import promise from 'redux-promise';
 
-import store from '../reducers/store';
+// import store from '../reducers/store';
 
 import Index from './Index';
 import About from './About';

@@ -1,5 +1,5 @@
 import React from 'react';
-import store from '../reducers/store';
+// import store from '../reducers/store';
 
 import style from '../sass/style.scss';
 
