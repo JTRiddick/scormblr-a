@@ -16,13 +16,13 @@ export const CREATE_POST = 'CREATE_POST';
 export const DELETE_POST = 'DELETE_POST';
 
 
-const ROOT_URL = 'http://docowls.herokuapp.com/';
+const ROOT_URL = 'http://docowls.herokuapp.com';
 // const API_KEY = '?key=ABCDEFG1fakekey';
 
 
 export function fetchPosts() {
-  // const request = axios.get(`${ROOT_URL}/posts${API_KEY}`);
-  const requires = axios.get('${ROOT_URL}/api/posts');
+  // const request = axios.get(`${ROOT_URL}/api/posts${API_KEY}`);
+  const request = axios.get(ROOT_URL + '/api/posts');
   return {
     type: FETCH_POSTS,
     payload: request

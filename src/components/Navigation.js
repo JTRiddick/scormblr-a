@@ -20,9 +20,9 @@ class Navigation extends React.Component{
     return(<div id={style.NavPrimary}>
       <Navbar>
         <Nav>
-          {/* <LinkContainer to="/">
-            <NavItem eventKey={1}>Home</NavItem>
-          </LinkContainer> */}
+          <LinkContainer to="/Posts">
+            <NavItem eventKey={1}>Blog</NavItem>
+          </LinkContainer>
 
           <LinkContainer to="/Clicker">
             <NavItem eventKey={1}>ClickerTest</NavItem>
