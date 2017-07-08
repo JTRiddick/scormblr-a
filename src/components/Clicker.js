@@ -6,10 +6,11 @@ import style from '../sass/style.scss';
 
 class Clicker extends React.Component {
 
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     // console.log('clicker props', this);
     // this.state = store.getState();
+    this.state = { number:props.number};
   }
 
   componentDidMount() {
@@ -17,9 +18,10 @@ class Clicker extends React.Component {
     //   this.setState(store.getState());
     // });
     //returns unsubscriber when component unmounts
-    console.log('clicker component did mount :', this.props);
-    this.state = this.props.number;
-    let { dispatch } = this.props;
+  }
+
+  componentWillReceiveProps(nextProps){
+    this.setState({number:nextProps.number});
   }
 
   componentWillUnmount(){
@@ -27,32 +29,27 @@ class Clicker extends React.Component {
   }
 
   handleClickAdd(){
-    dispatch({ type: 'INCREMENT' });
-    this.setState({number:this.props.number});
+    this.props.dispatch({ type: 'INCREMENT' });
   }
 
   handleClickSub(){
-    dispatch({ type: 'DECREMENT' });
-    this.setState({number:this.props.number});
-
+    this.props.dispatch({ type: 'DECREMENT' })
   }
 
   handleBigClickAdd(){
-    dispatch({ type: 'INCREMENT_WITH_AMOUNT', value: 5});
-    this.setState({number:this.props.number});
+    this.props.dispatch({ type: 'INCREMENT_WITH_AMOUNT', value: 5});
   }
 
   handleBigClickSub(){
-    dispatch({ type: 'DECREMENT_WITH_AMOUNT', value: 5});
-    this.setState({number:this.props.number});
+    this.props.dispatch({ type: 'DECREMENT_WITH_AMOUNT', value: 5});
   }
 
   render(){
+    let number = this.state ? this.state.number.number : 0;
     return(
       <div className={style.test}>
         clicker
-        {console.log('state of clicker is : ',this.state)}
-        <p>{this.state ? this.state.number : 0}</p>
+        <p>{number}</p>
         <button onClick={()=>this.handleClickAdd()}>increase that number</button>
         <button onClick={()=>this.handleBigClickAdd()}>increase that number More</button>
         <button onClick={()=> this.handleClickSub()}>decrease that number</button>
@@ -63,7 +60,6 @@ class Clicker extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log('clicker mapstate to props state :', state);
   return {
     number:state.number
   }

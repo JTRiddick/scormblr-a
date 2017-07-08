@@ -5,7 +5,7 @@ const ShowCard = (props) => {
     let showCards;
   // console.log('show card ',props);
     console.log('showcard props,',props)
-    if (props.cards.length > 0){
+    if (props.cards && props.cards.length > 0){
       showCards =  props.cards.map((card,i)=>{
        return <tr key={i}>
          {/* <td>{card.number}</td> */}

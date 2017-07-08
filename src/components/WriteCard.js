@@ -1,11 +1,12 @@
 import React from 'react';
 // import store from '../reducers/store';
+import {connect} from 'react-redux';
 
 import style from '../sass/style.scss';
 
 class WriteCard extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     // this.state = store.getState();
     this.state = {name: '', text: ''};
@@ -24,12 +25,12 @@ class WriteCard extends React.Component {
   addCardClick(evt){
     evt.preventDefault();
     console.log('clicked add card ',this.state);
-    store.dispatch({type:'ADD_CARD', name:this.state.name, text:this.state.text});
+    this.props.dispatch({type:'ADD_CARD', name:this.state.name, text:this.state.text});
   }
 
   removeCardClick(){
     console.log('removed a card');
-    store.dispatch({type:'REMOVE_CARD'});
+    this.props.dispatch({type:'REMOVE_CARD'});
   }
 
   render(){
@@ -50,4 +51,4 @@ class WriteCard extends React.Component {
 }
 
 
-export default WriteCard;
+export default connect()(WriteCard);

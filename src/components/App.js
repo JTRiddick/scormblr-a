@@ -29,6 +29,9 @@ export class App extends React.Component {
       // <Provider store={createStoreWithMiddleware(reducers)}>
         <Layout>
           <Switch>
+            {/* <Route exactpath="/posts/new" component={PostsNew} />
+            <Route exact path="/posts/:id" component={PostsShow} />
+            <Route exact path="/posts" component={PostsIndex}/> */}
             <Route exact path="/clicker" component={Clicker} />
             <Route exact path="/cards" component={Cards} />
             <Route exact path="/about" component={About} />
