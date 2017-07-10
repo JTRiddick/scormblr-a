@@ -19,6 +19,9 @@ class PostsIndex extends Component {
           <Link to={`/posts/${post._id}`}>
             {post.title}
           </Link>
+          <div>
+            {JSON.stringify(post)}
+          </div>
         </li>
       );
     });

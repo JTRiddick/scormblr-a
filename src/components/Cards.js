@@ -27,8 +27,8 @@ class Cards extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
-    this.setState({cards:nextProps.cards, number:nextProps.number});
     console.log('cards component recieved props :', nextProps);
+    this.setState({cards:nextProps.cards, number:nextProps.number});
   }
 
   scormblPress(){
@@ -58,9 +58,10 @@ class Cards extends React.Component {
 // export default Cards;
 
 const mapStateToProps = state => {
+  console.log('cards mapStateToProps : ',state)
   return {
     cards:state.card.cards,
-    number:state.number.number
+    number:state.number
   }
 }
 export default connect(mapStateToProps)(Cards);

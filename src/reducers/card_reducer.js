@@ -27,12 +27,13 @@ export default function cardReducer(state = initialState,action){
 
   switch (action.type) {
     case ADD_CARD:
-      return Object.assign({},state,state.cards.push({name: action.name, text:action.text}));
+      // return Object.assign({},state,state.cards.push({name: action.name, text:action.text}));
+      return Object.assign({},state,{cards:[...state.cards,{name:action.name,text:action.text}]});
     case REMOVE_CARD:
       return Object.assign({},state,state.cards.pop());
     case SCRAMBLE:
       if(action.iterations > 1 && state.cards.length > 1){
-       return Object.assign({},state,cardScramble(state.cards,action.iterations))
+       return Object.assign({},state,{cards:[...cardScramble(state.cards,action.iterations)]});
      }else {
        return state;
      }
