@@ -1,6 +1,10 @@
 import axios from 'axios';
+import jwtDecode from 'jwt-decode';
 
-export const USER_LOGIN = 'USER_LOGIN';
+export const LOGIN_REQUEST = 'LOGIN_REQUEST';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAILURE = 'LOGIN_FAILURE';
+export const LOGOUT = 'LOGOUT';
 
 export const ADD_CARD = 'ADD_CARD';
 export const REMOVE_CARD = 'REMOVE_CARD';
@@ -19,6 +23,50 @@ export const DELETE_POST = 'DELETE_POST';
 const ROOT_URL = 'http://docowls.herokuapp.com';
 // const API_KEY = '?key=ABCDEFG1fakekey';
 
+const performRequest = (method,url,params,auth) => {
+  console.log("REQUEST ATTEMPTING PERFORMING :",args);
+  const body = method === 'get' ? 'params' : 'data'
+  const config = {
+    method,
+    url,
+    baseURL: ROOT_URL,
+    [body]: params || {}
+  }
+
+  if (auth) {
+    config.headers = {
+      Authorization: `Bearer ${localStorage.authToken}`
+    }
+  }
+  return axios.request(config);
+}
+
+export function userLogin(credentials) {
+  console.log('userLogin called : ',credentials);
+  // return dispatch => {
+  //   dispatch({type:LOGIN_REQUEST})
+  // }
+
+  axios.get('/signin',credentials).then(res => {
+    localStorage.authToken = res.data.token;
+    console.log('login ',res);
+    return({
+      type:LOGIN_SUCCESS,
+      user:jwtDecode(res.data.token)
+    })
+  }).catch(res => {
+    console.log('by the way login really failed idiot');
+    return({
+      type: LOGIN_FAILURE,
+      errorMessage: res.data.error
+    })
+  })
+}
+
+const logout = () => {
+  delete localStorage.authToken
+  return { type: LOGOUT }
+}
 
 export function fetchPosts() {
   // const request = axios.get(`${ROOT_URL}/api/posts${API_KEY}`);
@@ -58,5 +106,4 @@ export function cardScramble(cards,n) {
     iterations--;
     cardScramble(cards,iterations);
   }
-
 }

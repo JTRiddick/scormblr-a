@@ -62,8 +62,8 @@ function validate(values){
   if (!values.title || values.title.length < 3) {
     errors.title = "Enter a title that is at least 3 characters long!";
   }
-  if (!values.content){
-    errors.content = 'Enter some content please'
+  if (!values.body){
+    errors.body = 'Enter some content please'
   }
   return errors;
 }

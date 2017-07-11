@@ -13,6 +13,8 @@ import About from './About';
 import Clicker from './Clicker';
 import Cards from './Cards';
 
+import Login from './Login';
+
 import PostsNew from './blog/PostsNew';
 import PostsIndex from './blog/PostsIndex';
 import PostsShow from './blog/PostsShow';
@@ -41,6 +43,7 @@ export class App extends React.Component {
             <Route exact path="/clicker" component={Clicker} />
             <Route exact path="/cards" component={Cards} />
             <Route exact path="/about" component={About} />
+            <Route exact path="/login" component={Login} />
             <Route exact path="/" component={Index}/>
             <Route component={NotFoundPage} />
           </Switch>
