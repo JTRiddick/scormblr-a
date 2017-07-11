@@ -1,31 +1,10 @@
-import { ADD_CARD, REMOVE_CARD, SCRAMBLE } from '../actions/index';
+import { ADD_CARD, REMOVE_CARD, SCRAMBLE, cardScramble } from '../actions/index';
 
 const initialState = {
   cards:[],
   iterations:0
 }
-const cardScramble = (cards,n) => {
-  let iterations = n;
-  // is returning a new object necessary for immutable state change in reducer?
-  let newCards = {};
 
-  cards.forEach((card,i)=>{
-    let rngI = Math.floor(Math.random() * cards.length);
-    let temp = cards[i];
-    cards[i] = cards[rngI];
-    cards[rngI] = temp;
-  })
-  if(n < 1){
-    newCards = cards;
-    // console.log('shuffled cards to :',newCards); //its an array of objects
-    // dumbass
-    return newCards;
-  }else{
-    iterations--;
-    cardScramble(cards,iterations);
-  }
-
-}
 
 export default function cardReducer(state = initialState,action){
 
@@ -39,7 +18,7 @@ export default function cardReducer(state = initialState,action){
     case SCRAMBLE:
       if(action.iterations > 1 && state.cards.length > 1){
         let newCards = state.cards;
-        newCards = cardScramble(newCards,action.iterations);
+        newCards = cardScramble(newCards,action.iterations); //move to actions?
         console.log('newcards :', newCards); // returns undefined but works on remount
        return Object.assign({},state,{cards:[...newCards]});
      }else {

@@ -28,3 +28,35 @@ export function fetchPosts() {
     payload: request
   };
 }
+
+export function createPost(values, callback){
+  const request = axios.post(ROOT_URL + '/api/posts')
+    .then(() => callback());
+    return{
+      type: CREATE_POST,
+      payload: request
+    }
+}
+
+export function cardScramble(cards,n) {
+  let iterations = n;
+  // is returning a new object necessary for immutable state change in reducer?
+  let newCards = {};
+
+  cards.forEach((card,i)=>{
+    let rngI = Math.floor(Math.random() * cards.length);
+    let temp = cards[i];
+    cards[i] = cards[rngI];
+    cards[rngI] = temp;
+  })
+  if(n < 1){
+    newCards = cards;
+    // console.log('shuffled cards to :',newCards); //its an array of objects
+    // dumbass
+    return newCards;
+  }else{
+    iterations--;
+    cardScramble(cards,iterations);
+  }
+
+}

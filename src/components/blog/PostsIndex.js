@@ -20,7 +20,7 @@ class PostsIndex extends Component {
             {post.title}
           </Link>
           <div>
-            {JSON.stringify(post)}
+            {post.body}
           </div>
         </li>
       );
