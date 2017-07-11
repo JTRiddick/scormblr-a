@@ -20,37 +20,20 @@ export const CREATE_POST = 'CREATE_POST';
 export const DELETE_POST = 'DELETE_POST';
 
 
-const ROOT_URL = 'https://docowls.herokuapp.com/api';
+const ROOT_URL = 'http://docowls.herokuapp.com/api';
 // const API_KEY = '?key=ABCDEFG1fakekey';
-
-const performRequest = (method,url,params,auth) => {
-  console.log("REQUEST ATTEMPTING PERFORMING :",args);
-  const body = method === 'get' ? 'params' : 'data'
-  const config = {
-    method,
-    url,
-    baseURL: ROOT_URL,
-    [body]: params || {}
-  }
-
-  if (auth) {
-    config.headers = {
-      Authorization: `Bearer ${localStorage.authToken}`
-    }
-  }
-  return axios.request(config);
-}
 
 export function userLogin(credentials) {
   console.log('userLogin called : ',credentials);
   // return dispatch => {
   //   dispatch({type:LOGIN_REQUEST})
   // }
-
   axios({
     method:'post',
-    url:'https://docowls.herokuapp.com/api/signin',
-    data:{credentials}
+    url:`${ROOT_URL}/signin`,
+    data:credentials,
+    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+    processData:false,
   }).then(res => {
     localStorage.authToken = res.data.token;
     console.log('login ',res);
