@@ -20,7 +20,7 @@ export const CREATE_POST = 'CREATE_POST';
 export const DELETE_POST = 'DELETE_POST';
 
 
-const ROOT_URL = 'http://docowls.herokuapp.com';
+const ROOT_URL = 'https://docowls.herokuapp.com/api';
 // const API_KEY = '?key=ABCDEFG1fakekey';
 
 const performRequest = (method,url,params,auth) => {
@@ -47,7 +47,11 @@ export function userLogin(credentials) {
   //   dispatch({type:LOGIN_REQUEST})
   // }
 
-  axios.get('/signin',credentials).then(res => {
+  axios({
+    method:'post',
+    url:'https://docowls.herokuapp.com/api/signin',
+    data:{credentials}
+  }).then(res => {
     localStorage.authToken = res.data.token;
     console.log('login ',res);
     return({
@@ -70,7 +74,7 @@ const logout = () => {
 
 export function fetchPosts() {
   // const request = axios.get(`${ROOT_URL}/api/posts${API_KEY}`);
-  const request = axios.get(ROOT_URL + '/api/posts');
+  const request = axios.get(ROOT_URL + '/posts');
   return {
     type: FETCH_POSTS,
     payload: request
@@ -78,7 +82,7 @@ export function fetchPosts() {
 }
 
 export function createPost(values, callback){
-  const request = axios.post(ROOT_URL + '/api/posts')
+  const request = axios.post(ROOT_URL + '/posts')
     .then(() => callback());
     return{
       type: CREATE_POST,
