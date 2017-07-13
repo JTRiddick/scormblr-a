@@ -20,7 +20,8 @@ export const CREATE_POST = 'CREATE_POST';
 export const DELETE_POST = 'DELETE_POST';
 
 
-const ROOT_URL = 'http://docowls.herokuapp.com/api';
+// const ROOT_URL = 'http://docowls.herokuapp.com/api';
+const ROOT_URL = 'http://localhost:8888/api';
 // const API_KEY = '?key=ABCDEFG1fakekey';
 
 export function userLogin(credentials) {
@@ -31,8 +32,8 @@ export function userLogin(credentials) {
   axios({
     method:'post',
     url:`${ROOT_URL}/signin`,
-    data:credentials,
-    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+    data:{username:credentials.username,password:credentials.password},
+    dataType:'JSON',
     processData:false,
   }).then(res => {
     localStorage.authToken = res.data.token;
