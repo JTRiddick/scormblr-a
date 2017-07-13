@@ -19,14 +19,13 @@ export const FETCH_POST = 'FETCH_POST';
 export const CREATE_POST = 'CREATE_POST';
 export const DELETE_POST = 'DELETE_POST';
 
-
+const ROOT_URL = 'http://192.168.0.104:8888/api';
 // const ROOT_URL = 'http://docowls.herokuapp.com/api';
-const ROOT_URL = 'http://localhost:8888/api';
+// const ROOT_URL = 'http://localhost:8888/api';
 
 // const API_KEY = '?key=ABCDEFG1fakekey';
 
 export const userLogin = (credentials) => {
-  console.log('env ?', process);
   // console.log('userLogin called : ',credentials);
   return dispatch => {
     dispatch({type:LOGIN_REQUEST})
@@ -56,6 +55,7 @@ export const userLogin = (credentials) => {
 }
 
 export const logout = () => {
+  console.log('logout action fired');
   delete localStorage.authToken
   return { type: LOGOUT }
 }

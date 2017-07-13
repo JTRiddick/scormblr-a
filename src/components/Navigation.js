@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Route, WithRouter } from 'react-router-dom';
 import { Nav, Navbar, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { logout } from '../actions';
@@ -17,10 +17,11 @@ class Navigation extends React.Component{
     this.setState({user:nextProps.user});
   }
 
-  logout(){
-    console.log('loggin out');
-
-    this.props.history.push('/').then(this.props.logout)
+  handleSelect(evtKey,evt){
+    console.log('nav bar selection ',evt,typeof evt,evtKey,typeof evtKey);
+    if (evtKey == 9){
+      this.props.logout();
+    }
   }
 
   render(){
@@ -30,7 +31,7 @@ class Navigation extends React.Component{
         <NavItem eventKey={8}>
         Hello, {this.state.user.currentUser._doc.username}
         </NavItem>
-        <NavItem eventKey={9} onSelect={this.logout()}>
+        <NavItem eventKey={9} >
         ...Logout?
         </NavItem>
       </Nav>
@@ -45,7 +46,7 @@ class Navigation extends React.Component{
     }
 
     return(<div id={style.NavPrimary}>
-      <Navbar>
+      <Navbar onSelect={(evtKey,evt)=>{this.handleSelect(evtKey,evt)}}>
         <Nav>
           <LinkContainer to="/Posts">
             <NavItem eventKey={1}>Blog</NavItem>
