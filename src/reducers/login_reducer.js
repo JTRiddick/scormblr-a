@@ -1,4 +1,5 @@
 import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT } from '../actions';
+import jwtDecode from 'jwt-decode';
 
 // const initialState = {
 //   isAuthenticating:fasle,
@@ -8,11 +9,11 @@ import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT } from '../actions'
 
 const initialState = (token => ({
   isAuthenticating: false,
-  currentUser: token ? jwtDecode(token) : null,
+  currentUser: token ? jwtDecode(token) : null, //throws error when reloading page where authToken undefined!!
   errorMessage: null
 }))(localStorage.authToken)
 
-const reducer = ( state = initialState, action = {} ) => {
+const loginReducer = ( state = initialState, action = {} ) => {
   switch (action.type) {
     case LOGIN_REQUEST:
       return {
@@ -41,3 +42,5 @@ const reducer = ( state = initialState, action = {} ) => {
       return state
   }
 }
+
+export default loginReducer;

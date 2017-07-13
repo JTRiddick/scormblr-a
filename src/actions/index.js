@@ -28,28 +28,29 @@ export const userLogin = (credentials) => {
   // console.log('userLogin called : ',credentials);
   return dispatch => {
     dispatch({type:LOGIN_REQUEST})
-  }
-  axios({
-    method:'post',
-    url:`${ROOT_URL}/signin`,
-    data:{username:credentials.username,password:credentials.password},
-    dataType:'JSON',
-    processData:false,
-  }).then(res => {
-    localStorage.authToken = res.data.token;
-    console.log('login really worked? ',res);
-    dispatch({
-      type:LOGIN_SUCCESS,
-      user:jwtDecode(res.data.token)
-    })
-  }).catch(res => {
-    console.log('by the way login really failed idiot');
-    dispatch({
-      type: LOGIN_FAILURE,
-      errorMessage: res.data.error
-    })
-  })
 
+    axios({
+      method:'post',
+      url:`${ROOT_URL}/signin`,
+      data:{username:credentials.username,password:credentials.password},
+      dataType:'JSON',
+      processData:false,
+    }).then(res => {
+      localStorage.authToken = res.data.token;
+      console.log('login really worked? ',res);
+      dispatch({
+        type:LOGIN_SUCCESS,
+        user:jwtDecode(res.data.token)
+      })
+    }).catch(res => {
+      console.log('by the way login really failed idiot', res);
+      dispatch({
+        type: LOGIN_FAILURE,
+        errorMessage: res.error
+        // errorMessage: res.data.error
+      })
+    })
+  }
 }
 
 export const logout = () => {
