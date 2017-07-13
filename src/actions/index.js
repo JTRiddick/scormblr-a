@@ -20,15 +20,15 @@ export const CREATE_POST = 'CREATE_POST';
 export const DELETE_POST = 'DELETE_POST';
 
 
-// const ROOT_URL = 'http://docowls.herokuapp.com/api';
-const ROOT_URL = 'http://localhost:8888/api';
+const ROOT_URL = 'http://docowls.herokuapp.com/api';
+// const ROOT_URL = 'http://localhost:8888/api';
 // const API_KEY = '?key=ABCDEFG1fakekey';
 
-export function userLogin(credentials) {
-  console.log('userLogin called : ',credentials);
-  // return dispatch => {
-  //   dispatch({type:LOGIN_REQUEST})
-  // }
+export const userLogin = (credentials) => {
+  // console.log('userLogin called : ',credentials);
+  return dispatch => {
+    dispatch({type:LOGIN_REQUEST})
+  }
   axios({
     method:'post',
     url:`${ROOT_URL}/signin`,
@@ -37,21 +37,22 @@ export function userLogin(credentials) {
     processData:false,
   }).then(res => {
     localStorage.authToken = res.data.token;
-    console.log('login ',res);
-    return({
+    console.log('login really worked? ',res);
+    dispatch({
       type:LOGIN_SUCCESS,
       user:jwtDecode(res.data.token)
     })
   }).catch(res => {
     console.log('by the way login really failed idiot');
-    return({
+    dispatch({
       type: LOGIN_FAILURE,
       errorMessage: res.data.error
     })
   })
+
 }
 
-const logout = () => {
+export const logout = () => {
   delete localStorage.authToken
   return { type: LOGOUT }
 }

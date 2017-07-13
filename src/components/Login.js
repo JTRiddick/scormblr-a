@@ -25,7 +25,7 @@ class Login extends Component{
   }
 
   onSubmit(values){
-    console.log("values on submit : ",values);
+    // console.log("values on submit : ",values);
     this.props.userLogin(values, () => {
       this.props.history.push('/Posts');
     });

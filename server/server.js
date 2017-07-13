@@ -7,7 +7,7 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter as Router } from 'react-router-dom';
 import morgan from 'morgan';
-import { App } from '../src/components/App';
+import { Routes as App } from '../src/components/Routes';
 
 
 const app = new Express();

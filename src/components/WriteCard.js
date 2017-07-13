@@ -24,12 +24,12 @@ class WriteCard extends React.Component {
 
   addCardClick(evt){
     evt.preventDefault();
-    console.log('clicked add card ',this.state);
+    // console.log('clicked add card ',this.state);
     this.props.dispatch({type:'ADD_CARD', name:this.state.name, text:this.state.text});
   }
 
   removeCardClick(){
-    console.log('removed a card');
+    // console.log('removed a card');
     this.props.dispatch({type:'REMOVE_CARD'});
   }
 

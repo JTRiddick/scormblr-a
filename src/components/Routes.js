@@ -25,7 +25,7 @@ import NotFoundPage from './NotFound';
 
 // const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
 
-export class App extends React.Component {
+export class Routes extends React.Component {
   constructor(){
     super();
   }
@@ -66,4 +66,4 @@ export class App extends React.Component {
 //   // </Provider>
 // );
 
-export default App;
+export default Routes;

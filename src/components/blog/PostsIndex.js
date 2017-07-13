@@ -12,7 +12,7 @@ class PostsIndex extends Component {
   }
 
   renderPosts(){
-    console.log("Posts Index props : ", this.props);
+    // console.log("Posts Index props : ", this.props);
     return _.map(this.props.posts, post =>{
       return (
         <li className="list-group-item" key={post._id}>

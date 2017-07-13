@@ -19,7 +19,7 @@ export default function cardReducer(state = initialState,action){
       if(action.iterations > 1 && state.cards.length > 1){
         let newCards = state.cards;
         newCards = cardScramble(newCards,action.iterations); //move to actions?
-        console.log('newcards :', newCards); // returns undefined but works on remount
+        // console.log('newcards :', newCards); // returns undefined but works on remount
        return Object.assign({},state,{cards:[...newCards]});
      }else {
        return state;

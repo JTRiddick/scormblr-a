@@ -29,7 +29,7 @@ class PostsNew extends Component{
   }
 
   onSubmit(values){
-    console.log("values on submit : ",values);
+    // console.log("values on submit : ",values);
     this.props.createPost(values, () => {
       this.props.history.push('/Posts');
     });
