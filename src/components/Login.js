@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { userLogin, userSignUp } from '../actions';
+import { userLogin } from '../actions';
 
 class Login extends Component{
 
@@ -23,6 +23,8 @@ class Login extends Component{
   }
 
   renderField(field){
+    console.log("render field :", field);
+
     const {meta: {touched, error}} = field;
     const className = `form-group ${touched && error ? 'has-danger' : ""}`
 
@@ -44,7 +46,7 @@ class Login extends Component{
     // console.log("values on submit : ",values);
     if (this.state.signUp === true){
       console.log('new user sign up');
-      this.props.userSignUp(values, () => {
+      this.props.userLogin(values, true, () => {
       });
     }else{
       console.log('user log in');
@@ -98,16 +100,16 @@ function validate(values){
   return errors;
 }
 
-const mapStateToProps = (state) => {
-  return {
-    signUp:state.user.signUp
-  };
-}
+// const mapStateToProps = (state) => {
+//   return {
+//     signUp:state.user.signUp
+//   };
+// }
 
 
 export default reduxForm({
   validate,
   form: 'UserLoginForm'
 })(
-  connect(mapStateToProps,{userLogin})(Login)
+  connect(null,{ userLogin })(Login)
 );

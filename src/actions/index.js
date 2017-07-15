@@ -20,14 +20,14 @@ export const FETCH_POST = 'FETCH_POST';
 export const CREATE_POST = 'CREATE_POST';
 export const DELETE_POST = 'DELETE_POST';
 
-const ROOT_URL = 'http://192.168.0.104:8888/api';
-// const ROOT_URL = 'http://docowls.herokuapp.com/api';
-// const ROOT_URL = 'http://localhost:8888/api';
+const ROOT_URL = 'http://192.168.0.104:8888/api'; //LAN Host
+// const ROOT_URL = 'http://docowls.herokuapp.com/api'; //Heroku
+// const ROOT_URL = 'http://localhost:8888/api'; //Local
 
 // const API_KEY = '?key=ABCDEFG1fakekey';
 
 export const userLogin = (credentials, newUser = false) => {
-  console.log('userLogin called : ',credentials, newUser);
+  console.log('userLogin called : ',arguments);
   let authRoute = 'signin';
   if(newUser === true){
     console.log('new user signup action');
@@ -38,7 +38,7 @@ export const userLogin = (credentials, newUser = false) => {
 
   return dispatch => {
     dispatch({type:LOGIN_REQUEST})
-
+    console.log('user login action dispatch called');
     axios({
       method:'post',
       url:`${ROOT_URL}/${authRoute}`,
@@ -60,15 +60,6 @@ export const userLogin = (credentials, newUser = false) => {
         // errorMessage: res.data.error
       })
     })
-  }
-}
-
-export const userSignUp = credentials => {
-  return dispatch => {
-    dispatch({type:LOGIN_REQUEST})
-    delete localStorage.authToken;
-    //make different login request
-    userLogin(credentials, true);
   }
 }
 
