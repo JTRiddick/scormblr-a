@@ -46,13 +46,14 @@ class Login extends Component{
       });
     }else{
       console.log('user log in');
-      this.props.userLogin(values, () => {
+      this.props.userLogin(values,false, () => {
       });
     }
     this.props.history.push('/Posts');
   }
 
   render(){
+    console.log("Sign up? ", this.state.signUp);
     const {handleSubmit} = this.props;
 
     let heading;

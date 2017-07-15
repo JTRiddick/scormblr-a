@@ -46,7 +46,8 @@ export const userLogin = (credentials, newUser = false) => {
       dataType:'JSON',
       processData:false,
     }).then(res => {
-      if(newUser === true){
+      console.log('axios response recieved, ',res,newUser);
+      if(newUser === false){
         localStorage.authToken = res.data.token;
         console.log('login really worked? ',res);
         dispatch({
@@ -55,6 +56,9 @@ export const userLogin = (credentials, newUser = false) => {
         })
       }else{
         console.log('new user created : ', res);
+        dispatch({
+          type:LOGOUT
+        })
       }
     }).catch(res => {
       console.log('by the way login really failed idiot', res);
@@ -84,9 +88,17 @@ export function fetchPosts() {
 }
 
 export function createPost(values,callback){
-  console.log('create post arguments : ',arguments, localStorage.authToken);
-  const request = axios.post(`${ROOT_URL}/posts`,null,localStorage.authToken)
-    .then(() => callback());
+  const request = axios.post(`${ROOT_URL}/posts`,
+    {headers: {'Authorization': localStorage.authToken}
+  })
+  .then(() => callback())
+  .catch(res => {
+    console.log("You can not post for some reason ", res);
+    dispatch({
+      type:LOGIN_FAILURE,
+      errorMessage:res.error
+    })
+  })
     return{
       type: CREATE_POST,
       payload: request
