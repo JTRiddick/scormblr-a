@@ -43,18 +43,6 @@ const loginReducer = ( state = initialState, action = {} ) => {
         errorMessage: null,
         signUp:false
       }
-    case NEW_USER:
-      return{
-        isAuthenticating:false,
-        currentUser:null,
-        errorMessage:null,
-        signUp:true
-      }
-    case FORM_LOGIN:
-      return{
-        ...state,
-        signUp:false
-      }
     default:
       return state
   }

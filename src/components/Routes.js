@@ -40,7 +40,7 @@ export class Routes extends React.Component {
             <Route exact path="/cards" component={Cards} />
             <Route exact path="/about" component={About} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/signup" component={Login} signUp={true} />
+            <Route exact path="/login/:signup" component={Login} signUp={true} />
             <Route exact path="/" component={Index}/>
             <Route component={NotFoundPage} />
           </Switch>

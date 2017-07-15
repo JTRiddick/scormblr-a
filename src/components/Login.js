@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { userLogin,userSignUp } from '../actions';
+import { userLogin, userSignUp } from '../actions';
 
 class Login extends Component{
 
   constructor(props){
     super(props);
-
+    console.log('LOGIN CONSTRUCTED');
+    this.state = { signUp: props.match.params.signup ? true : false }
   }
 
   componentWillReceiveProps(nextProps){
@@ -17,7 +18,7 @@ class Login extends Component{
     );
 
     this.setState({
-      signUp: nextProps.signUp ? true : false
+      signUp: nextProps.match.params.signup ? true : false
     })
   }
 
@@ -41,10 +42,12 @@ class Login extends Component{
 
   onSubmit(values){
     // console.log("values on submit : ",values);
-    if (this.state.signUp){
-      this.props.newUserLogin(values, () => {
+    if (this.state.signUp === true){
+      console.log('new user sign up');
+      this.props.userSignUp(values, () => {
       });
     }else{
+      console.log('user log in');
       this.props.userLogin(values, () => {
       });
     }
@@ -73,6 +76,7 @@ class Login extends Component{
           <Field
             label="User Password"
             name="password"
+            type="password"
             component={this.renderField}
           />
           <button type="submit" className="btn btn-primary">Submit</button>

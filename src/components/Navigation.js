@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { NavLink, Route, WithRouter } from 'react-router-dom';
 import { Nav, Navbar, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import { logout, signUpForm } from '../actions';
+import { logout } from '../actions';
 
 import style from '../sass/style.scss';
 
@@ -24,9 +24,10 @@ class Navigation extends React.Component{
     }
     if (evtKey == 8.2){
       //log in form
+
     }
     if (evtKey == 9){
-      this.props.signUpForm();
+      //sign up form
     }
   }
 
@@ -48,7 +49,7 @@ class Navigation extends React.Component{
             Sign in
           </NavItem>
         </LinkContainer>
-        <LinkContainer to="/SignUp">
+        <LinkContainer to="/Login/signup">
           <NavItem eventKey={9}>
             Sign up
           </NavItem>
@@ -80,4 +81,4 @@ class Navigation extends React.Component{
 function mapStateToProps(state){
   return {user:state.user};
 }
-export default connect(mapStateToProps, {logout,signUpForm})(Navigation)
+export default connect(mapStateToProps, {logout})(Navigation)
