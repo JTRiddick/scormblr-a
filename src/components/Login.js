@@ -8,31 +8,27 @@ class Login extends Component{
 
   constructor(props){
     super(props);
-    console.log('LOGIN CONSTRUCTED');
     this.state = { signUp: props.match.params.signup ? true : false }
   }
 
   componentWillReceiveProps(nextProps){
-    console.log('login page props/nextProps/state on receive props :',
-      this.props,nextProps,this.state
-    );
-
     this.setState({
       signUp: nextProps.match.params.signup ? true : false
     })
   }
 
   renderField(field){
-    console.log("render field :", field);
+    // console.log("render field :", field);
 
     const {meta: {touched, error}} = field;
     const className = `form-group ${touched && error ? 'has-danger' : ""}`
+    const type = field.type ? field.type : "text";
 
     return(<div className={className}>
       <label>{field.label}</label>
       <input
         className = "form-control"
-        type = "text"
+        type = {type}
         {...field.input}
       />
       <div className = "text-help">
@@ -73,6 +69,7 @@ class Login extends Component{
           <Field
             label="User Name"
             name="username"
+            type="text"
             component={this.renderField}
           />
           <Field

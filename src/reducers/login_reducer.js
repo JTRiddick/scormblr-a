@@ -11,7 +11,6 @@ const initialState = (token => ({
   isAuthenticating: false,
   currentUser: token ? jwtDecode(token) : null, //throws error when reloading page where authToken undefined!!
   errorMessage: null,
-  signUp:false
 }))(localStorage.authToken)
 
 const loginReducer = ( state = initialState, action = {} ) => {
@@ -19,29 +18,25 @@ const loginReducer = ( state = initialState, action = {} ) => {
     case LOGIN_REQUEST:
       return {
         ...state,
-        isAuthenticating: true,
-        signUp:false
+        isAuthenticating: true
       }
     case LOGIN_FAILURE:
       return {
         ...state,
         isAuthenticating: false,
-        errorMessage: action.errorMessage,
-        signUp:false
+        errorMessage: action.errorMessage
       }
     case LOGIN_SUCCESS:
       return {
         isAuthenticating: false,
         currentUser: action.user,
-        errorMessage: null,
-        signUp:false
+        errorMessage: null
       }
     case LOGOUT:
       return {
         isAuthenticating: false,
         currentUser: null,
-        errorMessage: null,
-        signUp:false
+        errorMessage: null
       }
     default:
       return state

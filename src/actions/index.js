@@ -46,12 +46,16 @@ export const userLogin = (credentials, newUser = false) => {
       dataType:'JSON',
       processData:false,
     }).then(res => {
-      localStorage.authToken = res.data.token;
-      console.log('login really worked? ',res);
-      dispatch({
-        type:LOGIN_SUCCESS,
-        user:jwtDecode(res.data.token)
-      })
+      if(newUser === true){
+        localStorage.authToken = res.data.token;
+        console.log('login really worked? ',res);
+        dispatch({
+          type:LOGIN_SUCCESS,
+          user:jwtDecode(res.data.token)
+        })
+      }else{
+        console.log('new user created : ', res);
+      }
     }).catch(res => {
       console.log('by the way login really failed idiot', res);
       dispatch({
@@ -79,8 +83,9 @@ export function fetchPosts() {
   };
 }
 
-export function createPost(values, callback){
-  const request = axios.post(`${ROOT_URL}/posts`)
+export function createPost(values,callback){
+  console.log('create post arguments : ',arguments, localStorage.authToken);
+  const request = axios.post(`${ROOT_URL}/posts`,null,localStorage.authToken)
     .then(() => callback());
     return{
       type: CREATE_POST,
