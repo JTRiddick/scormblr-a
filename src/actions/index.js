@@ -5,6 +5,8 @@ export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const LOGOUT = 'LOGOUT';
+export const NEW_USER = 'NEW_USER';
+export const FORM_LOGIN = 'FORM_LOGIN';
 
 export const ADD_CARD = 'ADD_CARD';
 export const REMOVE_CARD = 'REMOVE_CARD';
@@ -25,14 +27,19 @@ const ROOT_URL = 'http://192.168.0.104:8888/api';
 
 // const API_KEY = '?key=ABCDEFG1fakekey';
 
-export const userLogin = (credentials) => {
+export const userLogin = (credentials, newUser) => {
   // console.log('userLogin called : ',credentials);
+  let authRoute = 'signin';
+  if(newUser){
+    authRoute = 'signup';
+  }
+
   return dispatch => {
     dispatch({type:LOGIN_REQUEST})
 
     axios({
       method:'post',
-      url:`${ROOT_URL}/signin`,
+      url:`${ROOT_URL}/${authRoute}`,
       data:{username:credentials.username,password:credentials.password},
       dataType:'JSON',
       processData:false,
@@ -54,10 +61,24 @@ export const userLogin = (credentials) => {
   }
 }
 
+export const newUserLogin = credentials => {
+  return dispatch => {
+    dispatch({type:LOGIN_REQUEST})
+    //make different login request
+    userLogin(credentials, true);
+  }
+}
+
 export const logout = () => {
   console.log('logout action fired');
   delete localStorage.authToken
   return { type: LOGOUT }
+}
+
+export const signUpForm = () => {
+  console.log('signup form action fired');
+  delete localStorage.authToken
+  return { type: NEW_USER }
 }
 
 export function fetchPosts() {

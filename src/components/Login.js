@@ -2,9 +2,24 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { userLogin } from '../actions';
+import { userLogin,userSignUp } from '../actions';
 
 class Login extends Component{
+
+  constructor(props){
+    super(props);
+
+  }
+
+  componentWillReceiveProps(nextProps){
+    console.log('login page props/nextProps/state on receive props :',
+      this.props,nextProps,this.state
+    );
+
+    this.setState({
+      signUp: nextProps.signUp ? true : false
+    })
+  }
 
   renderField(field){
     const {meta: {touched, error}} = field;
@@ -26,29 +41,44 @@ class Login extends Component{
 
   onSubmit(values){
     // console.log("values on submit : ",values);
-    this.props.userLogin(values, () => {
-      this.props.history.push('/Posts');
-    });
+    if (this.state.signUp){
+      this.props.newUserLogin(values, () => {
+      });
+    }else{
+      this.props.userLogin(values, () => {
+      });
+    }
+    this.props.history.push('/Posts');
   }
 
   render(){
     const {handleSubmit} = this.props;
 
+    let heading;
+    if (this.state && this.state.signUp){
+      heading = <h3>Sign Up for an Account</h3>
+    }else{
+      heading = <h3>Log In to your Account</h3>
+    }
+
     return(
-      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-        <Field
-          label="User Name"
-          name="username"
-          component={this.renderField}
-        />
-        <Field
-          label="User Password"
-          name="password"
-          component={this.renderField}
-        />
-        <button type="submit" className="btn btn-primary">Submit</button>
-        <Link to="/Posts" className="btn btn-danger"> Cancel </Link>
-      </form>
+      <div>
+        {heading}
+        <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+          <Field
+            label="User Name"
+            name="username"
+            component={this.renderField}
+          />
+          <Field
+            label="User Password"
+            name="password"
+            component={this.renderField}
+          />
+          <button type="submit" className="btn btn-primary">Submit</button>
+          <Link to="/Posts" className="btn btn-danger"> Cancel </Link>
+        </form>
+      </div>
     );
   }
 }
@@ -64,10 +94,16 @@ function validate(values){
   return errors;
 }
 
+const mapStateToProps = (state) => {
+  return {
+    signUp:state.user.signUp
+  };
+}
+
 
 export default reduxForm({
   validate,
   form: 'UserLoginForm'
 })(
-  connect(null,{userLogin})(Login)
+  connect(mapStateToProps,{userLogin})(Login)
 );
