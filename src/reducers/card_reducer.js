@@ -1,4 +1,4 @@
-import { ADD_CARD, REMOVE_CARD, SCRAMBLE, cardScramble } from '../actions/index';
+import { ADD_CARD, REMOVE_CARD, SCRAMBLE } from '../actions/index';
 
 const initialState = {
   cards:[],
@@ -17,9 +17,6 @@ export default function cardReducer(state = initialState,action){
       return Object.assign( {},state,{cards:state.cards.slice(0,-1)} );
     case SCRAMBLE:
       if(action.iterations > 1 && state.cards.length > 1){
-        let newCards = state.cards;
-        newCards = cardScramble(newCards,action.iterations); //move to actions?
-        // console.log('newcards :', newCards); // returns undefined but works on remount
        return Object.assign({},state,{cards:[...newCards]});
      }else {
        return state;

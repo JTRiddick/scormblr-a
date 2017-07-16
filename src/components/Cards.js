@@ -7,6 +7,8 @@ import ShowCard from './ShowCard';
 import WriteCard from './WriteCard';
 import Clicker from './Clicker';
 
+import { cardScramble } from '../actions';
+
 class Cards extends React.Component {
 
   constructor(props){
@@ -32,8 +34,9 @@ class Cards extends React.Component {
   }
 
   scormblPress(){
+    console.log('cardScramble is...', this.props.cardScramble);
     if (this.state.number.number){
-      this.props.dispatch({type:'SCRAMBLE',iterations:this.state.number.number})
+      this.props.cardScramble(this.state.cards,this.state.number.number)
     }
   }
 
@@ -64,4 +67,4 @@ const mapStateToProps = state => {
     number:state.number
   }
 }
-export default connect(mapStateToProps)(Cards);
+export default connect(mapStateToProps, {cardScramble})(Cards);

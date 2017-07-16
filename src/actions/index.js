@@ -120,9 +120,14 @@ export function cardScramble(cards,n) {
     newCards = cards;
     // console.log('shuffled cards to :',newCards); //its an array of objects
     // dumbass
-    return newCards;
+    return {
+      type: SCRAMBLE,
+      newCards: newCards
+    };
+
   }else{
     iterations--;
     cardScramble(cards,iterations);
   }
+
 }
