@@ -17,7 +17,7 @@ export default function cardReducer(state = initialState,action){
       return Object.assign( {},state,{cards:state.cards.slice(0,-1)} );
     case SCRAMBLE:
       if(action.iterations > 1 && state.cards.length > 1){
-       return Object.assign({},state,{cards:newCards});
+       return Object.assign({},state,{cards:action.newCards});
      }else {
        return state;
      }

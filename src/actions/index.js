@@ -110,11 +110,10 @@ const request = axios.post(`${ROOT_URL}/posts`,values,{
     }
 }
 
-export function cardScramble(cards,n) {
+export const cardScramble = (cards,n) => {
+  return dispatch =>{
   let iterations = n;
   // is returning a new object necessary for immutable state change in reducer?
-  let newCards = {};
-
   cards.forEach((card,i)=>{
     let rngI = Math.floor(Math.random() * cards.length);
     let temp = cards[i];
@@ -122,16 +121,22 @@ export function cardScramble(cards,n) {
     cards[rngI] = temp;
   })
   if(n < 1){
-    newCards = cards;
     // console.log('shuffled cards to :',newCards); //its an array of objects
     // dumbass
+    return dispatch({
+      type: SCRAMBLE,
+      newCards: cards
+    });
 
   }else{
     iterations--;
     cardScramble(cards,iterations);
   }
-  return {
-    type: SCRAMBLE,
-    newCards: newCards
-  };
+
+  dispatch({
+    type:SCRAMBLE,
+    newCards: cards
+  })
+
+}
 }
