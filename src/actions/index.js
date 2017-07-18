@@ -88,8 +88,13 @@ export function fetchPosts() {
 }
 
 export function createPost(values,callback){
-  const request = axios.post(`${ROOT_URL}/posts`,
-    {headers: {'Authorization': localStorage.authToken}
+
+const request = axios.post(`${ROOT_URL}/posts`,values,{
+    headers:{
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('authToken')
+    }
   })
   .then(() => callback())
   .catch(res => {
@@ -120,14 +125,13 @@ export function cardScramble(cards,n) {
     newCards = cards;
     // console.log('shuffled cards to :',newCards); //its an array of objects
     // dumbass
-    return {
-      type: SCRAMBLE,
-      newCards: newCards
-    };
 
   }else{
     iterations--;
     cardScramble(cards,iterations);
   }
-
+  return {
+    type: SCRAMBLE,
+    newCards: newCards
+  };
 }
