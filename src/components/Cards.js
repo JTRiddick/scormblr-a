@@ -35,8 +35,8 @@ class Cards extends React.Component {
 
   scormblPress(){
     console.log('cardScramble is...', this.props.cardScramble);
-    if (this.state.number.number){
-      this.props.cardScramble(this.state.cards,this.state.number.number)
+    if (this.state.number){
+      this.props.cardScramble(this.state.cards,this.state.number)
     }
   }
 
@@ -64,7 +64,7 @@ const mapStateToProps = state => {
   console.log('cards mapStateToProps : ',state)
   return {
     cards:state.card.cards,
-    number:state.number
+    number:state.number.number
   }
 }
 export default connect(mapStateToProps, {cardScramble})(Cards);
