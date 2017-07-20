@@ -97,7 +97,7 @@ export function fetchPost(id){
 }
 
 export function deletePost(id, callback){
-  const request = axios.delete(`${ROOT_URL}/posts/${id}`,null,{
+  const request = axios.delete(`${ROOT_URL}/posts/${id}`,{
     headers:{
       'Accept': 'application/json',
       'Content-Type': 'application/json',
