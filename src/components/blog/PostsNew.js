@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createPost } from '../../actions';
 
-
+import style from '../../sass/style.scss';
 
 
 class PostsNew extends Component{
@@ -29,8 +29,8 @@ class PostsNew extends Component{
   }
 
   onSubmit(values){
-    // console.log("values on submit : ",values);
-    this.props.createPost(values, () => {
+    console.log("values on submit : ",{...values,'user':this.props.user});
+    this.props.createPost({...values,'user':this.props.user}, () => {
       this.props.history.push('/Posts');
     });
   }
@@ -68,10 +68,13 @@ function validate(values){
   return errors;
 }
 
+const mapStateToProps = ({user},ownProps ) =>{
+  return {user: user.currentUser._doc.username};
+}
 
 export default reduxForm({
   validate,
   form: 'PostsNewForm'
 })(
-  connect(null,{createPost})(PostsNew)
+  connect(mapStateToProps,{createPost})(PostsNew)
 );

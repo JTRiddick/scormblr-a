@@ -87,9 +87,38 @@ export function fetchPosts() {
   };
 }
 
+export function fetchPost(id){
+  const request = axios.get(`${ROOT_URL}/posts/${id}`);
+
+  return {
+    type: FETCH_POST,
+    payload: request
+  }
+}
+
+export function deletePost(id, callback){
+  const request = axios.delete(`${ROOT_URL}/posts/${id}`,null,{
+    headers:{
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('authToken')
+    }
+  })
+    .then(() => callback());
+
+  return {
+    type: DELETE_POST,
+    payload: id
+  }
+}
+
 export function createPost(values,callback){
 
-const request = axios.post(`${ROOT_URL}/posts`,values,{
+const request = axios.post(`${ROOT_URL}/posts`,{
+      'title':values.title,
+      'body':values.body,
+      'author':values.user
+    },{
     headers:{
       'Accept': 'application/json',
       'Content-Type': 'application/json',
