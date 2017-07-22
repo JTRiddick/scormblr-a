@@ -30,7 +30,7 @@ class PostsNew extends Component{
 
   onSubmit(values){
     console.log("values on submit : ",{...values,'user':this.props.user,});
-    this.props.createPost({...values,'user':this.props.user}, () => {
+    this.props.createPost({...values,'user':this.props.user,'userId':this.props.userId}, () => {
       this.props.history.push('/Posts');
     });
   }
@@ -69,7 +69,10 @@ function validate(values){
 }
 
 const mapStateToProps = ({user},ownProps ) =>{
-  return {user: user.currentUser._doc.username};
+  return {
+    user: user.currentUser._doc.username,
+    userId: user.currentUser.$__._id
+  };
 }
 
 export default reduxForm({

@@ -117,7 +117,8 @@ export function createPost(values,callback){
 const request = axios.post(`${ROOT_URL}/posts`,{
       'title':values.title,
       'body':values.body,
-      'author':values.user
+      'author':values.user,
+      'userId':values.userId
     },{
     headers:{
       'Accept': 'application/json',
