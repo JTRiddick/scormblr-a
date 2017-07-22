@@ -35,7 +35,7 @@ class PostsShow extends Component{
     if(!post){
       return <div>Loading...</div>
     }
-    if (user.currentUser){
+    if (user.currentUser && post.author === user.currentUser._doc.username){
      deleteButton = <button
           className = "btn btn-danger pull-xs-right"
           onClick = {this.onDeleteClick.bind(this)}
