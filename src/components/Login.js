@@ -41,11 +41,9 @@ class Login extends Component{
   onSubmit(values){
     // console.log("values on submit : ",values);
     if (this.state.signUp === true){
-      console.log('new user sign up');
       this.props.userLogin(values, true, () => {
       });
     }else{
-      console.log('user log in');
       this.props.userLogin(values,false, () => {
       });
     }
@@ -53,7 +51,6 @@ class Login extends Component{
   }
 
   render(){
-    console.log("Sign up? ", this.state.signUp);
     const {handleSubmit} = this.props;
 
     let heading;

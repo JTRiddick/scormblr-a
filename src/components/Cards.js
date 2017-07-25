@@ -29,19 +29,16 @@ class Cards extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
-    console.log('cards component recieved props :', nextProps);
     this.setState({cards:nextProps.cards, number:nextProps.number});
   }
 
   scormblPress(){
-    console.log('cardScramble is...', this.props.cardScramble);
     if (this.state.number){
       this.props.cardScramble(this.state.cards,this.state.number)
     }
   }
 
   render(){
-      console.log('Card component state and props :',this.state, this.props);
 
     return (<div >
       <Clicker />
@@ -61,7 +58,6 @@ class Cards extends React.Component {
 // export default Cards;
 
 const mapStateToProps = state => {
-  console.log('cards mapStateToProps : ',state)
   return {
     cards:state.card.cards,
     number:state.number.number
