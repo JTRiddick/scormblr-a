@@ -51,12 +51,11 @@ export const userLogin = (credentials, newUser = false) => {
           type:LOGOUT
         })
       }
-    }).catch(res => {
-      console.log('by the way login really failed idiot', res);
+    }).catch(err => {
+      console.log('by the way login really failed idiot', err);
       dispatch({
         type: LOGIN_FAILURE,
-        errorMessage: res.error
-        // errorMessage: res.data.error
+        errorMessage: err.response.data.msg
       })
     })
   }
@@ -118,11 +117,11 @@ const request = axios.post(`${ROOT_URL}/posts`,{
     }
   })
   .then(() => callback())
-  .catch(res => {
-    console.log("You can not post for some reason ", res);
+  .catch(err => {
+    console.log("You can not post for some reason ", err);
     dispatch({
       type:LOGIN_FAILURE,
-      errorMessage:res.error
+      errorMessage:err.response.data.msg
     })
   })
     return{
