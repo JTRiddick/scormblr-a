@@ -13,9 +13,9 @@ class PostsShow extends Component{
       const otherId = this.props.match.params.id;
       const { id } = this.props.match.params;
 
-      console.log('posts show props', this.props);
-      console.log('posts show { id } ',id)
-      console.log('posts show id ',otherId);
+      // console.log('posts show props', this.props);
+      // console.log('posts show { id } ',id)
+      // console.log('posts show id ',otherId);
 
       this.props.fetchPost(id);
     }

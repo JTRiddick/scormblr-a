@@ -44,8 +44,7 @@ export const userLogin = (credentials, newUser = false) => {
           type:LOGIN_SUCCESS,
           user:jwtDecode(res.data.token)
         })
-      }
-    }).catch(err => {
+      }).catch(err => {
       console.log('by the way login really failed idiot', err);
       dispatch({
         type: LOGIN_FAILURE,
@@ -109,8 +108,7 @@ const request = axios.post(`${ROOT_URL}/posts`,{
       'Content-Type': 'application/json',
       'Authorization': localStorage.getItem('authToken')
     }
-  })
-  .then(() => callback())
+  }).then(() => callback())
   .catch(err => {
     console.log("You can not post for some reason ", err);
     dispatch({

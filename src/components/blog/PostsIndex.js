@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchPosts } from '../../actions';
+import { Panel } from 'react-bootstrap';
 
 import style from '../../sass/style.scss';
 
@@ -28,13 +29,13 @@ class PostsIndex extends Component {
   }
 
   render(){
-
+    // if we were dumped back here after a bad request...
     if (this.props.user.errorMessage){
-      return (
-        <div>
-          <p>{this.props.user.errorMessage}</p>
-        </div>
-      )
+      return (<div className={`container ${style.denied}`}>
+          <Panel header="There's a Problem!" bsStyle="danger">
+            {this.props.user.errorMessage}
+          </Panel>
+        </div>)
     }else{
       return (
         <div>

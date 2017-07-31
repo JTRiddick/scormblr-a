@@ -39,7 +39,7 @@ class Login extends Component{
   }
 
   onSubmit(values){
-    // console.log("values on submit : ",values);
+    // check if we're signing up or not, call log in request with true if so
     if (this.state.signUp === true){
       this.props.userLogin(values, true, () => {
       });
