@@ -10,9 +10,6 @@ import promise from 'redux-promise';
 import Index from './Index';
 import About from './About';
 
-import Clicker from './Clicker';
-import Cards from './Cards';
-
 import Login from './Login';
 
 import PostsNew from './blog/PostsNew';
@@ -36,8 +33,6 @@ export class Routes extends React.Component {
             <Route exact path="/posts/new" component={PostsNew} />
             <Route exact path="/posts/:id" component={PostsShow} />
             <Route exact path="/posts" component={PostsIndex}/>
-            <Route exact path="/clicker" component={Clicker} />
-            <Route exact path="/cards" component={Cards} />
             <Route exact path="/about" component={About} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/login/:signup" component={Login} signUp={true} />

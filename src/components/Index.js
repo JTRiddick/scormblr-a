@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Clicker from './Clicker.js';
 
 import style from '../sass/style.scss';
 

@@ -55,31 +55,7 @@
   background-color: #F99206;
 }
 
-#Cards{
-  background-color:slategray;
-  margin: 0 auto;
-  padding: 2em;
-  table{
-    padding:1em;
-    margin:0 auto;
-    width: 80%;
-  }
-  tr{
-    float:left;
-    clear:none;
-    width: 20%;
-    margin:1em;
-  }
-  td{
-    background-color:$grau;
-    border:1px solid black;
-    padding: 1em;
-    margin:2em;
-  }
-}
-#cardForm{
-  margin: 3em 2em;
-}
+
 
 #NavPrimary{
   background-color: $grau;

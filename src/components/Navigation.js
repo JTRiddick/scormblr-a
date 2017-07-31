@@ -63,14 +63,6 @@ class Navigation extends React.Component{
           <LinkContainer to="/Posts">
             <NavItem eventKey={1}>Blog</NavItem>
           </LinkContainer>
-
-          <LinkContainer to="/Clicker">
-            <NavItem eventKey={1}>ClickerTest</NavItem>
-          </LinkContainer>
-
-          <LinkContainer to="/Cards">
-            <NavItem eventKey={2}>Test Cards and Clicker</NavItem>
-          </LinkContainer>
         </Nav>
           {loginSelection}
       </Navbar>
