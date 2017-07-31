@@ -37,18 +37,12 @@ export const userLogin = (credentials, newUser = false) => {
       dataType:'JSON',
       processData:false,
     }).then(res => {
-      console.log('axios response recieved, ',res,newUser);
-      if(newUser === false){
+        console.log('axios response recieved, ',res,newUser);
         localStorage.authToken = res.data.token;
         console.log('login really worked? ',res);
         dispatch({
           type:LOGIN_SUCCESS,
           user:jwtDecode(res.data.token)
-        })
-      }else{
-        console.log('new user created : ', res);
-        dispatch({
-          type:LOGOUT
         })
       }
     }).catch(err => {
