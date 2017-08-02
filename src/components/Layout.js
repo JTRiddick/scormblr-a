@@ -11,7 +11,7 @@ export const Layout = props => (
       <Link to="/">
         <img className="logo" src="/img/logo.svg" alt="Sitelogo" />
       </Link>
-      <Navigation/>
+      <Navigation history={props.history}/>
       {console.log('layout props: ',props)}
     </header>
     <div className="app-content">{props.children}</div>

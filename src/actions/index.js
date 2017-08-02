@@ -54,9 +54,10 @@ export const userLogin = (credentials, newUser = false) => {
   }
 }
 
-export const logout = () => {
+export const logout = (callback) => {
   console.log('logout action fired');
-  delete localStorage.authToken
+  delete localStorage.authToken;
+  callback();
   return { type: LOGOUT }
 }
 

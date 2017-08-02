@@ -20,7 +20,7 @@ class Navigation extends React.Component{
   handleSelect(evtKey,evt){
     console.log('nav bar selection ',evt,typeof evt,evtKey,typeof evtKey);
     if (evtKey == 8.1){
-      this.props.logout();
+      this.props.logout(()=>{this.props.history.push('/Posts')});
     }
     if (evtKey == 8.2){
       //log in form

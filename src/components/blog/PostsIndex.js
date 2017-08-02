@@ -28,6 +28,18 @@ class PostsIndex extends Component {
     });
   }
 
+  newPostClick(){
+    if (this.props.user.currentUser !== null){
+      return(
+        <div className="text-xs-right">
+          <Link className="btn btn-primary" to="/posts/new">
+            Add a Post
+          </Link>
+        </div>
+      )
+    }
+  }
+
   render(){
     // if we were dumped back here after a bad request...
     if (this.props.user.errorMessage){
@@ -39,11 +51,7 @@ class PostsIndex extends Component {
     }else{
       return (
         <div>
-          <div className="text-xs-right">
-            <Link className="btn btn-primary" to="/posts/new">
-              Add a Post
-            </Link>
-          </div>
+          {this.newPostClick()}
           <h3>Posts</h3>
           <ul className="list-group">
             {this.renderPosts()}
