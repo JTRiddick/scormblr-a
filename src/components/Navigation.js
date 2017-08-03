@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { NavLink, Route, WithRouter } from 'react-router-dom';
+import { NavLink, Route } from 'react-router-dom';
 import { Nav, Navbar, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { logout } from '../actions';
@@ -32,6 +32,7 @@ class Navigation extends React.Component{
   }
 
   render(){
+    console.log('i can see history? :',this.props.history)
     let loginSelection;
     if (this.state && this.state.user.currentUser){
       loginSelection = <Nav pullRight>
