@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Router, browserHistory } from 'react-router-dom';
 import promise from 'redux-promise';
 
 // import store from '../reducers/store';
@@ -25,7 +25,7 @@ import NotFoundPage from './NotFound';
 export class Routes extends React.Component {
 
   render(){
-      console.log('route props :', this.props)
+      console.log('routes props :', this.props)
     return(
       // <Provider store={createStoreWithMiddleware(reducers)}>
         <Layout>

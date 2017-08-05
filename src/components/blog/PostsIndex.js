@@ -50,13 +50,19 @@ class PostsIndex extends Component {
         </div>)
     }else{
       return (
-        <div>
-          {this.newPostClick()}
-          <h3>Posts</h3>
-          <ul className="list-group">
-            {this.renderPosts()}
-          </ul>
-        </div>
+        <section id={style.postsIndex}>
+          <div className={style.postsHeader}>
+            <h3>Posts</h3>
+          </div>
+          <div className={style.postsList}>
+            <ul className="list-group">
+              {this.renderPosts()}
+            </ul>
+          </div>
+          <div>
+            {this.newPostClick()}
+          </div>
+        </section>
       );
     }
 

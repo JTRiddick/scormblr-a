@@ -22,6 +22,9 @@ html {
   to {
     transform: rotate(360deg); } }
 
+nav.navbar.navbar-default ~ div {
+  padding: 0; }
+
 .style__test___2bKzv {
   font-family: sans-serif;
   margin: 0 auto;
@@ -45,9 +48,47 @@ html {
   padding: 1.775em;
   box-shadow: 2px 2px 2px 3px #a0332f; }
 
+#style__index___3KROG {
+  font-family: 'Andale-mono',monospace;
+  letter-spacing: 2px;
+  text-align: center;
+  box-shadow: 2px 2px 2px dodgerblue;
+  max-width: 66%; }
+  #style__index___3KROG h1 {
+    letter-spacing: 4px; }
+  #style__index___3KROG em {
+    font-style: italic; }
+
 #style__NavPrimary___38hkU {
   background-color: #e3e3e3;
   display: inline-block;
   width: 90%;
   position: relative;
   top: 1.225em; }
+  #style__NavPrimary___38hkU div {
+    margin: auto 0; }
+
+#style__postsIndex___JLguu {
+  text-rendering: optimizeLegibility;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex; }
+  #style__postsIndex___JLguu .style__postsHeader___1I_NO {
+    order: 1;
+    width: 10%;
+    height: 250px;
+    background-color: #4f5d75;
+    color: #d09944; }
+    #style__postsIndex___JLguu .style__postsHeader___1I_NO h3 {
+      position: relative;
+      top: 50%;
+      margin: auto;
+      text-align: center; }
+  #style__postsIndex___JLguu .style__postsList___1vvOd {
+    order: 2;
+    margin: auto;
+    width: 90%; }
+    #style__postsIndex___JLguu .style__postsList___1vvOd ul {
+      max-width: 100%; }

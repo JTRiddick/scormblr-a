@@ -25,6 +25,9 @@
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
    }
+   nav.navbar.navbar-default ~ div{
+    padding: 0;
+   }
 }
 
 :local{
@@ -61,6 +64,20 @@
   box-shadow: 2px 2px 2px 3px $rot;
 }
 
+#index{
+  font-family:'Andale-mono',monospace;
+  letter-spacing: 2px;
+  text-align: center;
+  box-shadow: 2px 2px 2px dodgerblue;
+  max-width: 66%;
+
+  h1{
+    letter-spacing: 4px;
+  }
+  em{
+    font-style: italic;
+  }
+}
 
 #NavPrimary{
   background-color: $grau;
@@ -69,7 +86,39 @@
   position: relative;
   top:1.225em;
 
+
+  div{
+    margin: auto 0;
+  }
+
 }
+
+#postsIndex{
+  text-rendering: optimizeLegibility;
+  @include flexbox();
+  .postsHeader{
+    order:1;
+    width: 10%;
+    height: 250px;
+    background-color: $grayblau;
+    color:$orange;
+    h3{
+      position: relative;
+      top:50%;
+      margin: auto;
+      text-align: center;
+    }
+  }
+  .postsList{
+    order:2;
+    margin: auto;
+    width: 90%;
+    ul{
+      max-width: 100%;
+    }
+  }
+}
+
 
 #Login{
 

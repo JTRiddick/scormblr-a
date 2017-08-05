@@ -8,7 +8,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import promise from 'redux-promise';
 import reduxThunk from 'redux-thunk'
 import rootReducer from './reducers/index';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, browserHistory } from 'react-router-dom';
 import { Routes } from './components/Routes';
 
 let store;
@@ -24,7 +24,7 @@ store = createStore(rootReducer, /* preloadedState, */ composeEnhancers(
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={history}>
+    <Router history={browserHistory}>
       <Routes />
     </Router>
   </Provider>
