@@ -95,6 +95,7 @@
 
 #postsIndex{
   text-rendering: optimizeLegibility;
+  font-family: "Raleway",sans-serif;
   @include flexbox();
   .postsHeader{
     order:1;
@@ -121,5 +122,21 @@
 
 
 #Login{
+  text-rendering: optimizeLegibility;
+  font-family: "Raleway",sans-serif;
+  width: 66%;
+  position: relative;
+  margin: 1em auto 2em auto;
+  padding:0.5em 1em;
+  color: #3943B7;
+  background-color: $teel;
+  box-shadow: 3px 3px 6px $darkGrau;
 
+  h3{
+    text-align: center;
+    font-weight: bold;
+  }
+  a:first-of-type{
+    float: right;
+  }
 }

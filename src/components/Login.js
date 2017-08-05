@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { userLogin } from '../actions';
 
+import styles from '../sass/style.scss';
+
 class Login extends Component{
 
   constructor(props){
@@ -61,7 +63,7 @@ class Login extends Component{
     }
 
     return(
-      <div>
+      <div id={styles.Login}>
         {heading}
         <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
           <Field
