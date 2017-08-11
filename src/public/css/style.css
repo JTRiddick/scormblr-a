@@ -10,9 +10,12 @@ html {
 .app-content {
   border: 1px solid darkgray; }
 
+.logo-container {
+  width: 10%;
+  display: inline-block; }
+
 .logo {
   animation: style__App-logo-spin___2vjDy infinite 20s linear;
-  height: 80px;
   position: relative;
   bottom: 1em; }
 

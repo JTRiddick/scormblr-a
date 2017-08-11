@@ -44,12 +44,12 @@ class PostsShow extends Component{
           </button>
     }
     return(<div>
+      <h3>{post.title}</h3>
+      <h6>By: {post.author} </h6>
+      {/* <h6>Categories: {post.categories}</h6> */}
+      <p>{post.body}</p>
       <Link className="btn btn-primary" to="/">Back to Index</Link>
-        {deleteButton}
-        <h3>{post.title}</h3>
-        <h6>By: {post.author} </h6>
-        <h6>Categories: {post.categories}</h6>
-        <p>{post.body}</p>
+      {deleteButton}
     </div>);
   }
 }

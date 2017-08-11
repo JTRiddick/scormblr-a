@@ -9,7 +9,9 @@ export const Layout = props => (
   <div className="app-container">
     <header className={styles.orangeBg}>
       <Link to="/">
-        <img className="logo" src="/img/logo.svg" alt="Sitelogo" />
+        <div className="logo-container">
+          <img className="logo" src="/img/logo.svg" alt="Sitelogo" />
+        </div>
       </Link>
       <Navigation history={props.history}/>
       {console.log('layout props: ',props)}

@@ -27,7 +27,6 @@ export class Routes extends React.Component {
   render(){
       console.log('routes props :', this.props)
     return(
-      // <Provider store={createStoreWithMiddleware(reducers)}>
         <Layout>
           <Switch>
             <Route exact path="/posts/new" component={PostsNew} />
@@ -35,27 +34,15 @@ export class Routes extends React.Component {
             <Route exact path="/posts" component={PostsIndex}/>
             <Route exact path="/about" component={About} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/login/:signup" component={Login} signUp={true} />
+            <Route exact path="/login/:signup" component={Login} />
             <Route exact path="/" component={Index}/>
             <Route component={NotFoundPage} />
           </Switch>
         </Layout>
-      // </Provider>
     );
   }
 }
 
-// export const App = () => (
-//   // <Provider store={createStoreWithMiddleware(reducers)}>
-//     <Layout>
-//       <Switch>
-//         <Route exact path="/cards" component={Cards} />
-//         <Route exact path="/about" component={About} />
-//         <Route exact path="/" component={Index}/>
-//         <Route component={NotFoundPage} />
-//       </Switch>
-//     </Layout>
-//   // </Provider>
-// );
+
 
 export default Routes;
