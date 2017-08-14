@@ -3,6 +3,8 @@ import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createPost } from '../../actions';
+import Dropzone from 'react-dropzone';
+import { upload } from 'superagent';
 
 import style from '../../sass/style.scss';
 
@@ -18,7 +20,7 @@ class PostsNew extends Component{
       <label>{field.label}</label>
       <input
         className = "form-control"
-        type = "text"
+        type= "text"
         {...field.input}
       />
       <div className = "text-help">
@@ -26,6 +28,42 @@ class PostsNew extends Component{
       </div>
 
     </div>);
+  }
+
+  renderImageUpload(field){
+    const {meta: {touched,error}} = field;
+    const files = field.input.value;
+    const className = `form-group ${touched && error ? 'has-danger' : ""}`
+
+    return(<div className={className}>
+      <label>{field.label}</label>
+      <Dropzone
+        onDrop={( filesToUpload, e ) => this.onDrop(filesToUpload)}
+        multiple= {false}
+        className= "form-control"
+        type= "file"
+        {...field.input}
+
+      />
+      {field.meta.touched &&
+           field.meta.error &&
+           <span className="error">{field.meta.error}</span>}
+         {files && Array.isArray(files) && (
+           <ul>
+             { files.map((file, i) => <li key={i}>{file.name}</li>) }
+           </ul>
+         )}
+
+    </div>);
+  }
+
+  onDrop(files){
+    superagent.post('/upload')
+     .attach('theseNamesMustMatch', files[0])
+     .end((err, res) => {
+       if (err) console.log(err);
+       alert('File uploaded!');
+     })
   }
 
   onSubmit(values){
@@ -49,6 +87,11 @@ class PostsNew extends Component{
           label="Post Content"
           name="body"
           component={this.renderField}
+        />
+        <Field
+          label="Post Image"
+          name="image"
+          component={this.renderImageUpload}
         />
         <button type="submit" className="btn btn-primary">Submit</button>
         <Link to="/Posts" className="btn btn-danger"> Cancel </Link>

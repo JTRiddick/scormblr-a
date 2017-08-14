@@ -11,6 +11,9 @@ require.extensions['.css'] = () => {
   return;
 }
 require('dotenv').config();
+//check node env
+// console.log('process.env' ,process.env);
+//ok
 require('./server')
 
 // why is any of this necessary to prevent unexpected token in scss?
