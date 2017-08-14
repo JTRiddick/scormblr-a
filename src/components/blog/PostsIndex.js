@@ -49,7 +49,7 @@ class PostsIndex extends Component {
           </Panel>
         </div>)
     }else{
-      return (
+      return (<div>
         <section id={style.postsIndex}>
           <div className={style.postsHeader}>
             <h3>Posts</h3>
@@ -59,10 +59,11 @@ class PostsIndex extends Component {
               {this.renderPosts()}
             </ul>
           </div>
-          <div>
-            {this.newPostClick()}
-          </div>
         </section>
+        <div>
+          {this.newPostClick()}
+        </div>
+      </div>
       );
     }
 

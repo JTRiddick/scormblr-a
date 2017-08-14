@@ -68,8 +68,8 @@
 }
 
 #index{
-  font-family:'Andale-mono',monospace;
-  letter-spacing: 2px;
+  font-family: "Raleway",sans-serif;
+  letter-spacing: 4px;
   text-align: center;
   box-shadow: 2px 2px 2px dodgerblue;
   max-width: 66%;
@@ -92,7 +92,7 @@
   div{
     margin: auto 0;
   }
-  
+
 }
 
 #postsIndex{
@@ -122,6 +122,19 @@
   }
 }
 
+#SinglePost{
+  margin: 0 auto;
+  border: 1px solid $bluprint;
+  padding: 16px;
+  margin: 10px;
+  box-shadow: 3px 3px 12px $blupurp;
+  text-align: center;
+
+  h3{
+    padding: 6px;
+  }
+}
+
 
 #Login{
   text-rendering: optimizeLegibility;
@@ -130,7 +143,7 @@
   position: relative;
   margin: 1em auto 2em auto;
   padding:0.5em 1em;
-  color: #3943B7;
+  color: $blupurp;
   background-color: $teel;
   box-shadow: 3px 3px 6px $darkGrau;
 

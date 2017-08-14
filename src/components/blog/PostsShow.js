@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchPost, deletePost } from '../../actions';
 
-import style from '../../sass/style.scss';
+import { SinglePost } from '../../sass/style.scss';
 
 class PostsShow extends Component{
 
@@ -43,10 +43,11 @@ class PostsShow extends Component{
             Delete Post
           </button>
     }
-    return(<div>
+    return(<div id={SinglePost}>
       <h3>{post.title}</h3>
       <h6>By: {post.author} </h6>
       {/* <h6>Categories: {post.categories}</h6> */}
+      <h6>Date Published: {post.Created_date}</h6>
       <p>{post.body}</p>
       <Link className="btn btn-primary" to="/">Back to Index</Link>
       {deleteButton}
