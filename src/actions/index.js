@@ -1,5 +1,6 @@
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
+import superagent from 'superagent';
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -97,6 +98,17 @@ export function deletePost(id, callback){
 }
 
 export function createPost(values,callback){
+
+  if (values.files){
+    console.log('create post is uploading files...',values.files);
+    const files = values.files;
+    superagent.post('/upload')
+     .attach('theseNamesMustMatch', files[0])
+     .end((err, res) => {
+       if (err) console.log(err);
+       alert('File uploaded!');
+     })
+  }
 
 const request = axios.post(`${ROOT_URL}/posts`,{
       'title':values.title,

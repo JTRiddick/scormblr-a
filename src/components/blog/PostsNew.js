@@ -58,12 +58,13 @@ class PostsNew extends Component{
   }
 
   onDrop(files){
-    superagent.post('/upload')
-     .attach('theseNamesMustMatch', files[0])
-     .end((err, res) => {
-       if (err) console.log(err);
-       alert('File uploaded!');
-     })
+    console.log('onDrop called with :', arguments);
+    // superagent.post('/upload')
+    //  .attach('theseNamesMustMatch', files[0])
+    //  .end((err, res) => {
+    //    if (err) console.log(err);
+    //    alert('File uploaded!');
+    //  })
   }
 
   onSubmit(values){
@@ -90,7 +91,7 @@ class PostsNew extends Component{
         />
         <Field
           label="Post Image"
-          name="image"
+          name="files"
           component={this.renderImageUpload}
         />
         <button type="submit" className="btn btn-primary">Submit</button>

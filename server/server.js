@@ -24,7 +24,7 @@ app.use(Express.static(path.join('src', 'public')));
 app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'));
 
 //routes / aws s3 connection
-app.use(routes)
+app.use(routes);
 
 // universal routing and rendering
 app.get('*', (req, res) => {
@@ -53,6 +53,7 @@ app.get('*', (req, res) => {
   return res.status(status).render('index', { markup });
 
 });
+
 
 // start the server
 const port = process.env.PORT || 3000;
