@@ -10,7 +10,7 @@ require.extensions['.scss'] = () => {
 require.extensions['.css'] = () => {
   return;
 }
-
+require('dotenv').config();
 require('./server')
 
 // why is any of this necessary to prevent unexpected token in scss?

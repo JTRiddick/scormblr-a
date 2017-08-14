@@ -8,7 +8,7 @@ import { renderToString } from 'react-dom/server';
 import { StaticRouter as Router } from 'react-router-dom';
 import morgan from 'morgan';
 import { Routes as App } from '../src/components/Routes';
-
+import routes from './routes.js';
 
 const app = new Express();
 const server = new Server(app);
@@ -22,6 +22,9 @@ app.use(Express.static(path.join('src', 'public')));
 
 //logging
 app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'));
+
+//routes / aws s3 connection
+app.use(routes)
 
 // universal routing and rendering
 app.get('*', (req, res) => {
