@@ -3,8 +3,8 @@ import { Field, reduxForm } from 'redux-form';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createPost } from '../../actions';
-import Dropzone from 'react-dropzone';
-import { upload } from 'superagent';
+
+import { ImageUpload as renderImageUpload } from './ImageUpload';
 
 import style from '../../sass/style.scss';
 
@@ -30,42 +30,7 @@ class PostsNew extends Component{
     </div>);
   }
 
-  renderImageUpload(field){
-    const {meta: {touched,error}} = field;
-    const files = field.input.value;
-    const className = `form-group ${touched && error ? 'has-danger' : ""}`
 
-    return(<div className={className}>
-      <label>{field.label}</label>
-      <Dropzone
-        onDrop={( filesToUpload, e ) => this.onDrop(filesToUpload)}
-        multiple= {false}
-        className= "form-control"
-        type= "file"
-        {...field.input}
-
-      />
-      {field.meta.touched &&
-           field.meta.error &&
-           <span className="error">{field.meta.error}</span>}
-         {files && Array.isArray(files) && (
-           <ul>
-             { files.map((file, i) => <li key={i}>{file.name}</li>) }
-           </ul>
-         )}
-
-    </div>);
-  }
-
-  onDrop(files){
-    console.log('onDrop called with :', arguments);
-    // superagent.post('/upload')
-    //  .attach('theseNamesMustMatch', files[0])
-    //  .end((err, res) => {
-    //    if (err) console.log(err);
-    //    alert('File uploaded!');
-    //  })
-  }
 
   onSubmit(values){
     console.log("values on submit : ",{...values,'user':this.props.user,});
@@ -75,6 +40,7 @@ class PostsNew extends Component{
   }
 
   render(){
+    console.log('image upload Component : ', this.renderImageUpload);
     const {handleSubmit} = this.props;
 
     return(

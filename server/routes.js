@@ -24,17 +24,17 @@ const upload = multer({
 
 router.post('/upload', upload.single('imageFile'), (req, res) => {
   //test log
-  console.log("s3 post test :", req.file);
+  // console.log("s3 post test :", req.file);
 
   // req.file is the 'theseNamesMustMatch' file
   s3.putObject({
       Bucket: 'pommedeterror',
       Key: req.file.originalname,
       Body: req.file.buffer,
-      ACL: 'public-read', // your permisions
+      ACL: 'public-read-write', // your permisions
     }, (err) => {
       if (err) return res.status(400).send(err);
-      res.send('File uploaded to S3');
+      res.status(201).send('File uploaded to S3 :');
   })
 })
 
