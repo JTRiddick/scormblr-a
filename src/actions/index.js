@@ -103,7 +103,7 @@ export function createPost(values,callback){
     console.log('create post is uploading files...',values.files);
     const files = values.files;
     superagent.post('/upload')
-     .attach('theseNamesMustMatch', files[0])
+     .attach('imageFile', files[0])
      .end((err, res) => {
        if (err) console.log(err);
        alert('File uploaded!');

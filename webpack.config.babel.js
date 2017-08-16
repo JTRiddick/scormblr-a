@@ -8,6 +8,7 @@ import autoprefixer from 'autoprefixer';
 
 require.extensions['.scss'] = () => { return; }; require.extensions['.css'] = () => { return; };
 
+
 let extractSCSS = new ExtractTextPlugin({
   filename:"style.scss",
   allChunks:true
@@ -80,8 +81,13 @@ const config = {
       beautify:false,
       dead_code:true
     }),
-    new ExtractTextPlugin('../css/style.css')
-  ]
+    new ExtractTextPlugin('../css/style.css'),
+
+  ],
+  node: {
+  __dirname: true,
+  },
 };
+
 
 export default config;

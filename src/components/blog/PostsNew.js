@@ -90,7 +90,7 @@ class PostsNew extends Component{
           component={this.renderField}
         />
         <Field
-          label="Post Image"
+          label="Post-Image"
           name="files"
           component={this.renderImageUpload}
         />

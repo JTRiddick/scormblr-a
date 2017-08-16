@@ -22,14 +22,14 @@ const upload = multer({
   limits: { fileSize: 52428800 },
 });
 
-router.post('/upload', upload.single('theseNamesMustMatch'), (req, res) => {
+router.post('/upload', upload.single('imageFile'), (req, res) => {
   //test log
   console.log("s3 post test :", req.file);
 
   // req.file is the 'theseNamesMustMatch' file
   s3.putObject({
       Bucket: 'pommedeterror',
-      Key: 'scormblr-key-0000001',
+      Key: req.file.originalname,
       Body: req.file.buffer,
       ACL: 'public-read', // your permisions
     }, (err) => {
