@@ -4,30 +4,26 @@ import {connect} from 'react-redux';
 
 import style from '../../sass/style.scss';
 
-class ImageUpload extends Component {
+const ImageUpload = ({props}) => {
 
-  constructor(props){
-    //
-    super();
-    console.log('image upload constructor props: ', props);
-  }
+  // onDrop(files){
+  //   console.log('onDrop called with :', arguments);
+  //   // superagent.post('/upload')
+  //   //  .attach('theseNamesMustMatch', files[0])
+  //   //  .end((err, res) => {
+  //   //    if (err) console.log(err);
+  //   //    alert('File uploaded!');
+  //   //  })
+  // }
 
 
-  onDrop(files){
-    console.log('onDrop called with :', arguments);
-    // superagent.post('/upload')
-    //  .attach('theseNamesMustMatch', files[0])
-    //  .end((err, res) => {
-    //    if (err) console.log(err);
-    //    alert('File uploaded!');
-    //  })
-  }
+  console.log('image upload constructor props: ', props);
 
-  renderImageUpload(field){
-    const {meta: {touched,error}} = field;
-    const files = field.input.value;
-    const className = `form-group ${touched && error ? 'has-danger' : ""}`
-
+  const {meta: {touched,error}} = field;
+  const files = field.input.value;
+  const className = `form-group ${touched && error ? 'has-danger' : ""}`
+  if (field){
+    console.log('field is :', field);
     return(<div className={className}>
       <label>{field.label}</label>
       <Dropzone
@@ -48,14 +44,13 @@ class ImageUpload extends Component {
          )}
 
     </div>);
-  }
-
-  render(){
+  }else{
     return(
-      {renderImageUpload}
+      <div>
+        <h4>IMAGE UPLOADER TROUBLED</h4>
+      </div>
     )
   }
 
 }
-
 export default ImageUpload;

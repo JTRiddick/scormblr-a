@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createPost } from '../../actions';
 
-import { ImageUpload as renderImageUpload } from './ImageUpload';
+import ImageUpload from './ImageUpload.js';
 
 import style from '../../sass/style.scss';
 
@@ -40,8 +40,9 @@ class PostsNew extends Component{
   }
 
   render(){
-    console.log('image upload Component : ', this.renderImageUpload);
+
     const {handleSubmit} = this.props;
+
 
     return(
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
@@ -58,7 +59,7 @@ class PostsNew extends Component{
         <Field
           label="Post-Image"
           name="files"
-          component={this.renderImageUpload}
+          component={ImageUpload(props)}
         />
         <button type="submit" className="btn btn-primary">Submit</button>
         <Link to="/Posts" className="btn btn-danger"> Cancel </Link>
