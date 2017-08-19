@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 
 import style from '../../sass/style.scss';
 
-const ImageUpload = ({props}) => {
+const ImageUpload = (props) => {
 
   // onDrop(files){
   //   console.log('onDrop called with :', arguments);
@@ -18,11 +18,11 @@ const ImageUpload = ({props}) => {
 
 
   console.log('image upload constructor props: ', props);
-
-  const {meta: {touched,error}} = field;
-  const files = field.input.value;
-  const className = `form-group ${touched && error ? 'has-danger' : ""}`
+  const field = props;
   if (field){
+    const {meta: {touched,error}} = field;
+    const files = field.input.value;
+    const className = `form-group ${touched && error ? 'has-danger' : ""}`
     console.log('field is :', field);
     return(<div className={className}>
       <label>{field.label}</label>

@@ -59,7 +59,7 @@ class PostsNew extends Component{
         <Field
           label="Post-Image"
           name="files"
-          component={ImageUpload(props)}
+          component={ImageUpload}
         />
         <button type="submit" className="btn btn-primary">Submit</button>
         <Link to="/Posts" className="btn btn-danger"> Cancel </Link>
