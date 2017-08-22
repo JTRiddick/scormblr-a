@@ -48,7 +48,13 @@ class PostsIndex extends Component {
             {this.props.user.errorMessage}
           </Panel>
         </div>)
-    }else{
+    } else if (this.props.posts.length < 1) {
+      return (<div className={`container ${style.denied}`}>
+        <Panel header="There's a Problem!" bsStyle="danger">
+          <p>Loading Posts....</p>
+        </Panel>
+      </div>)
+  }else{
       return (<div>
         <section id={style.postsIndex}>
           <div className={style.postsHeader}>
