@@ -11,6 +11,9 @@ import style from '../../sass/style.scss';
 
 class PostsNew extends Component{
 
+  constructor(){
+    super();
+  }
 
   renderField(field){
     const {meta: {touched, error}} = field;
@@ -34,7 +37,8 @@ class PostsNew extends Component{
 
   onSubmit(values){
     console.log("values on submit : ",{...values,'user':this.props.user,});
-    this.props.createPost({...values,'user':this.props.user,'userId':this.props.userId}, () => {
+    this.props.createPost(
+      {...values,'user':this.props.user,'userId':this.props.userId}, () => {
       this.props.history.push('/Posts');
     });
   }

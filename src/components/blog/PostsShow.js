@@ -7,6 +7,11 @@ import { SinglePost } from '../../sass/style.scss';
 
 class PostsShow extends Component{
 
+  constructor(){
+    super();
+    const testURL = `${process.env.AWS_BUCKET_LOCATION}`;
+  }
+
   componentDidMount(){
     //check for posts
     if(!this.props.post){

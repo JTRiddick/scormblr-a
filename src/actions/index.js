@@ -1,6 +1,7 @@
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 import superagent from 'superagent';
+import _ from 'lodash';
 
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -98,9 +99,11 @@ export function deletePost(id, callback){
 }
 
 export function createPost(values,callback){
-
+  let imageFiles = [];
   if (values.files){
     console.log('create post is uploading files...',values.files);
+    imageFiles = _.map(values.files,'name');
+    console.log('image files are...',imageFiles);
     const files = values.files;
     superagent.post('/upload')
      .attach('imageFile', files[0])
@@ -108,30 +111,31 @@ export function createPost(values,callback){
        if (err) console.log(err);
        console.log('superagent res',res);
        alert('File uploaded!');
-     })
+     });
   }
 
-const request = axios.post(`${ROOT_URL}/posts`,{
-      'title':values.title,
-      'body':values.body,
-      'author':values.user,
-      'userId':values.userId
-    },{
-    headers:{
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'Authorization': localStorage.getItem('authToken')
-    }
-  }).then(() => callback())
-  .catch(err => {
-    console.log("You can not post for some reason ", err);
-    dispatch({
-      type:LOGIN_FAILURE,
-      errorMessage:err.response.data.msg
+  const request = axios.post(`${ROOT_URL}/posts`,{
+        'title':values.title,
+        'body':values.body,
+        'author':values.user,
+        'userId':values.userId,
+        'imageLinks':_.forEach(imageFiles,(val)=>{process.env.AWS_BUCKET_LOCATION+val}),
+      },{
+      headers:{
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('authToken')
+      }
+    }).then(() => callback())
+    .catch(err => {
+      console.log("You can not post for some reason ", err);
+      dispatch({
+        type:LOGIN_FAILURE,
+        errorMessage:err.response.data.msg
+      })
     })
-  })
-    return{
-      type: CREATE_POST,
-      payload: request
-    }
-}
+      return{
+        type: CREATE_POST,
+        payload: request
+      }
+  }
