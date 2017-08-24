@@ -14,18 +14,26 @@ class PostsIndex extends Component {
 
   renderPosts(){
     // console.log("Posts Index props : ", this.props);
-    return _.map(this.props.posts, post =>{
-      return (
-        <li className="list-group-item" key={post._id}>
-          <Link to={`/posts/${post._id}`}>
-            {post.title}
-          </Link>
-          <div>
-            {post.body}
-          </div>
-        </li>
-      );
-    });
+    if (this.props.posts === {}) {
+      return (<div className={`container ${style.denied}`}>
+        <Panel header="There's a Problem!" bsStyle="danger">
+          <p>No Posts</p>
+        </Panel>
+    </div>)}
+    else {
+      return _.map(this.props.posts, post =>{
+        return (
+          <li className="list-group-item" key={post._id}>
+            <Link to={`/posts/${post._id}`}>
+              {post.title}
+            </Link>
+            <div>
+              {post.body}
+            </div>
+          </li>
+        );
+      });
+    }
   }
 
   newPostClick(){
@@ -41,6 +49,7 @@ class PostsIndex extends Component {
   }
 
   render(){
+    console.log('posts index posts @ render: ', this.props.posts);
     // if we were dumped back here after a bad request...
     if (this.props.user.errorMessage){
       return (<div className={`container ${style.denied}`}>
@@ -48,13 +57,7 @@ class PostsIndex extends Component {
             {this.props.user.errorMessage}
           </Panel>
         </div>)
-    } else if (this.props.posts.length < 1) {
-      return (<div className={`container ${style.denied}`}>
-        <Panel header="There's a Problem!" bsStyle="danger">
-          <p>Loading Posts....</p>
-        </Panel>
-      </div>)
-  }else{
+    }else{
       return (<div>
         <section id={style.postsIndex}>
           <div className={style.postsHeader}>
