@@ -14,6 +14,8 @@ export const CREATE_POST = 'CREATE_POST';
 export const DELETE_POST = 'DELETE_POST';
 
 const ROOT_URL = 'http://192.168.0.104:8888/api'; //LAN Host
+const AWS_BUCKET_URL = "https://s3.ca-central-1.amazonaws.com/pommedeterror";
+
 // const ROOT_URL = 'http://docowls.herokuapp.com/api'; //Heroku
 // const ROOT_URL = 'http://localhost:8888/api'; //Local
 
@@ -100,10 +102,9 @@ export function deletePost(id, callback){
 
 export function createPost(values,callback){
   let imageFiles = [];
+
   if (values.files){
-    console.log('create post is uploading files...',values.files);
     imageFiles = _.map(values.files,'name');
-    console.log('image files are...',imageFiles);
     const files = values.files;
     superagent.post('/upload')
      .attach('imageFile', files[0])
@@ -114,12 +115,19 @@ export function createPost(values,callback){
      });
   }
 
+  console.log("AWS URL :", AWS_BUCKET_URL);
+  let imageFilesUrls = []
+   imageFiles.forEach((url,i)=>{
+    return imageFilesUrls.push(AWS_BUCKET_URL + "/" + url);
+  });
+  console.log('imageFilesUrls are...',imageFilesUrls);
+
   const request = axios.post(`${ROOT_URL}/posts`,{
         'title':values.title,
         'body':values.body,
         'author':values.user,
         'userId':values.userId,
-        'imageLinks':_.forEach(imageFiles,(val)=>{process.env.AWS_BUCKET_LOCATION+val}),
+        'imageLinks':imageFilesUrls,
       },{
       headers:{
         'Accept': 'application/json',
