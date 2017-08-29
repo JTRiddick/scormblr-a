@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Dropzone from 'react-dropzone';
 import {connect} from 'react-redux';
+import _ from 'lodash';
 
 import style from '../../sass/style.scss';
 
@@ -19,12 +20,14 @@ const ImageUpload = (props) => {
 
   console.log('image upload constructor props: ', props);
   const field = props;
+
   if (field){
     const {meta: {touched,error}} = field;
-    const files = field.input.value;
+    let files = props.input.value;
     const className = `form-group ${touched && error ? 'has-danger' : ""}`
     console.log('field is :', field);
     return(<div className={className}>
+      <h4>Upload Files Here</h4>
       <label>{field.label}</label>
       <Dropzone
         onDrop={( filesToUpload, e ) => this.onDrop(filesToUpload)}
@@ -32,16 +35,15 @@ const ImageUpload = (props) => {
         className= "form-control"
         type= "file"
         {...field.input}
-
       />
+      {console.log('files in dropzone :',files, 'Array.isArray(files) ',Array.isArray(files))}
       {field.meta.touched &&
            field.meta.error &&
            <span className="error">{field.meta.error}</span>}
-         {files && Array.isArray(files) && (
-           <ul>
-             { files.map((file, i) => <li key={i}>{file.name}</li>) }
-           </ul>
-         )}
+      { files &&
+        <UploadPreview files={files}/>
+      }
+
 
     </div>);
   }else{
@@ -53,4 +55,11 @@ const ImageUpload = (props) => {
   }
 
 }
+
+const UploadPreview = (files) => {
+  return(<ul>
+          { _.forEach(files,(file, i) => {<li key={i}>{file.name}</li>}) }
+         </ul>)
+}
+
 export default ImageUpload;
