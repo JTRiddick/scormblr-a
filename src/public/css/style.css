@@ -4,6 +4,9 @@
 html {
   background-color: lightgray; }
 
+input[type=file] {
+  display: block; }
+
 .app-container {
   border: 1px solid black; }
 
@@ -122,3 +125,6 @@ nav.navbar.navbar-default ~ div {
     font-weight: bold; }
   #style__Login___3E7oZ a:first-of-type {
     float: right; }
+
+#style__NewPost___3Iqzc .style__fileUpload___2X6KZ input[type=file] {
+  display: block; }

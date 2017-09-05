@@ -7,6 +7,9 @@
   html{
     background-color: lightgray;
   }
+  input[type=file] {
+    display: block;
+  }
   .app-container{
     border: 1px solid black;
   }
@@ -153,5 +156,13 @@
   }
   a:first-of-type{
     float: right;
+  }
+}
+
+#NewPost{
+  .fileUpload{
+    input[type=file]{
+      display: block;
+    }
   }
 }

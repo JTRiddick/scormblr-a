@@ -33,7 +33,9 @@ class PostsNew extends Component{
     </div>);
   }
 
-
+  onFocus(){
+    console.log('focused...',this);
+  }
 
   onSubmit(values){
     console.log("values on submit : ",{...values,'user':this.props.user,});
@@ -49,7 +51,7 @@ class PostsNew extends Component{
 
 
     return(
-      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+      <form id={style.NewPost} onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <Field
           label="Post Title"
           name="title"
@@ -64,6 +66,7 @@ class PostsNew extends Component{
           label="Post-Image"
           name="files"
           component={ImageUpload}
+          onFocus={this.onFocus()}
         />
         <button type="submit" className="btn btn-primary">Submit</button>
         <Link to="/Posts" className="btn btn-danger"> Cancel </Link>
