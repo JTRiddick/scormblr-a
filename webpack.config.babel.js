@@ -5,6 +5,7 @@ import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import SplitByPathPlugin from 'webpack-split-by-path';
 import autoprefixer from 'autoprefixer';
+import WebpackShellPlugin from 'webpack-shell-plugin';
 
 require.extensions['.scss'] = () => { return; }; require.extensions['.css'] = () => { return; };
 
@@ -82,6 +83,7 @@ const config = {
       dead_code:true
     }),
     new ExtractTextPlugin('../css/style.css'),
+    new WebpackShellPlugin({onBuildStart:['echo "Webpack Start"'], onBuildEnd:['nodemon server/run-server.js --watch build']}),
 
   ],
   node: {
