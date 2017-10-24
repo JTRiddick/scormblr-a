@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchPost, deletePost } from '../../actions';
 
-import { SinglePost } from '../../sass/style.scss';
+import { SinglePost } from '../../sass/postview.scss';
 
 class PostsShow extends Component{
 

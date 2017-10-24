@@ -29,13 +29,3 @@ ReactDOM.render(
     </Router>
   </Provider>
 , document.getElementById('main'));
-
-// const AppClient = () => (
-//   <Router>
-//     <App />
-//   </Router>
-// );
-//
-// window.onload = () => {
-//   render(<AppClient />, document.getElementById('main'));
-// };
