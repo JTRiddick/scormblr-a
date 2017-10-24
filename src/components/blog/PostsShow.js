@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchPost, deletePost } from '../../actions';
 
-import { SinglePost } from '../../sass/postview.scss';
+import { SinglePost, PostImages } from '../../sass/postview.scss';
 
 class PostsShow extends Component{
 
@@ -18,7 +18,7 @@ class PostsShow extends Component{
       const otherId = this.props.match.params.id;
       const { id } = this.props.match.params;
 
-      // console.log('posts show props', this.props);
+      console.log('posts show props', this.props);
       // console.log('posts show { id } ',id)
       // console.log('posts show id ',otherId);
 
@@ -48,15 +48,29 @@ class PostsShow extends Component{
             Delete Post
           </button>
     }
-    return(<div id={SinglePost}>
+    return(<section id={SinglePost}>
       <h3>{post.title}</h3>
       <h6>By: {post.author} </h6>
       {/* <h6>Categories: {post.categories}</h6> */}
       <h6>Date Published: {post.Created_date}</h6>
       <p>{post.body}</p>
+      <ImageContainer urls={[...post.imageLinks]}/>
       <Link className="btn btn-primary" to="/">Back to Index</Link>
       {deleteButton}
-    </div>);
+    </section>);
+  }
+}
+
+class ImageContainer extends Component{
+  constructor(props){
+    super(props);
+  }
+
+  render(){
+
+    return(<section id={PostImages}>
+      <p>{this.props.urls}</p>
+    </section>)
   }
 }
 

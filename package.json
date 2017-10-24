@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "npm run build && node server/run-server.js",
-    "start:aws": "export NODE_ENV=production && npm rebuild node-sass && webpack && node server/run-server.js",
-    "start:dev": "export NODE_ENV=development && npm run build:dev && nodemon --exec node -- server/run-server.js",
+    "start:aws": "export NODE_ENV=production && npm rebuild node-sass && run:build",
+    "start:dev": "export NODE_ENV=development && npm run build:dev:watch",
     "start:universal": "export UNIVERSAL=true && npm run start",
     "start:universal:aws": "export NODE_ENV=production && export UNIVERSAL=true && npm run start:aws",
     "start:dev:universal": "export NODE_ENV=development && export UNIVERSAL=true && npm run start:dev",

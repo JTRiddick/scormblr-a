@@ -7,7 +7,7 @@ Now working on AWS???
 
 ###
 Trouble:
--stylesheets don't load if navigating to specific route first
+-stylesheets don't load if navigating to specific post id route first
 -304 response on navigation
 -need run-server.js to run server
 -lots of babel presets and unused modules
