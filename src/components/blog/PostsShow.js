@@ -61,17 +61,16 @@ class PostsShow extends Component{
   }
 }
 
-class ImageContainer extends Component{
-  constructor(props){
-    super(props);
-  }
+const ImageContainer = (props) =>{
+  console.log('image container props ',props);
+  return(<section id={PostImages}>
+    {props.urls.map((img,k)=>{ return(
+      <div key={k}>
+        <img src={img}></img>
+      </div>)
+    })}
+  </section>)
 
-  render(){
-
-    return(<section id={PostImages}>
-      <p>{this.props.urls}</p>
-    </section>)
-  }
 }
 
 const mapStateToProps = ({posts, user},ownProps ) =>{

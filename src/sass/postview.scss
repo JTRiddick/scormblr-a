@@ -14,3 +14,17 @@
     padding: 6px;
   }
 }
+
+#PostImages{
+  @include flexbox()
+  div{
+    @include flex(auto);
+    @include flex-direction(row);
+    @include flex-basis(300px);
+    background-color: $darkGrau;
+    margin: 32px;
+  }
+  img{
+    max-width: 300px;
+  }
+}

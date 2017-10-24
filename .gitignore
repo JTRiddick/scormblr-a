@@ -12,3 +12,8 @@ npm-debug.log
 
 #local
 .env
+
+#webpack -watch
+*.hot-update.json
+*.*.hot-update.json
+*.hot-update.js
