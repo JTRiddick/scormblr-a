@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { fetchPosts } from '../../actions';
 import { Panel } from 'react-bootstrap';
 
+import { PostsShow } from './PostsShow.js';
+
 import style from '../../sass/style.scss';
 
 class PostsIndex extends Component {
@@ -14,26 +16,18 @@ class PostsIndex extends Component {
 
   renderPosts(){
     // console.log("Posts Index props : ", this.props);
-    if (this.props.posts === {}) {
-      return (<div className={`container ${style.denied}`}>
-        <Panel header="There's a Problem!" bsStyle="danger">
-          <p>No Posts</p>
-        </Panel>
-    </div>)}
-    else {
-      return _.map(this.props.posts, post =>{
-        return (
-          <li className="list-group-item" key={post._id}>
-            <Link to={`/posts/${post._id}`}>
-              {post.title}
-            </Link>
-            <div>
-              {post.body}
-            </div>
-          </li>
-        );
-      });
-    }
+
+    return _.map(this.props.posts, post =>{
+      return (
+        <li className="list-group-item" key={post._id}>
+          <Link to={`/posts/${post._id}`}>
+            {post.title}
+          </Link>
+        <PostsShow {...post}/>
+        </li>
+      );
+    });
+
   }
 
   newPostClick(){
@@ -57,7 +51,14 @@ class PostsIndex extends Component {
             {this.props.user.errorMessage}
           </Panel>
         </div>)
+    }else if (!this.props.posts.length) {
+      return (<div className={`container ${style.denied}`}>
+        <Panel header="There's a Problem!" bsStyle="danger">
+          <p>No Posts</p>
+        </Panel>
+      </div>)
     }else{
+
       return (<div>
         <section id={style.postsIndex}>
           <div className={style.postsHeader}>
@@ -74,8 +75,8 @@ class PostsIndex extends Component {
         </div>
       </div>
       );
-    }
 
+    }
   }
 }
 
