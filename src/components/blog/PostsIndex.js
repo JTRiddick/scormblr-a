@@ -25,7 +25,7 @@ class PostsIndex extends Component {
     }else{
       return _.map(posts, post =>{
         return (
-          <PostIndexItem post={post} />
+          <PostIndexItem post={post} key={post._id}/>
         );
       });
     }
@@ -74,13 +74,30 @@ class PostsIndex extends Component {
   }
 }
 
-const PostIndexItem = post => {
+const PostIndexItem = props => {
+
+  const post = props.post;
+  const postStyle = {
+    headLink:{display:'inline-block',width:'100%'},
+    prevBody:{maxWidth:'40%', display:'inline-block'},
+    image:{maxWidth:'240px'}
+  }
+  const postImg =
+    post.imageLinks[0] ? post.imageLinks[0] : '/img/placeholder.jpg';
+  console.log('post index presentational ,',props,post)
   return(
-    <li className="list-group-item" key={post._id}>
+    <li className="list-group-item" >
       <Link to={`/posts/${post._id}`}>
         {post.title}
       </Link>
-        {post.body}
+      <div>
+        <div style={postStyle.prevBody}>
+        <p>{post.body}</p>
+        </div>
+        <div style={postStyle.prevBody}>
+          <img style={postStyle.image} src={postImg}/>
+        </div>
+      </div>
     </li>
   )
 }

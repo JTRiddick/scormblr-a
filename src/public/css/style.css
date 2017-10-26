@@ -1,6 +1,43 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway);/* Coolors Exported Palette - coolors.co/a0332f-fbfffa-e3e3e3-247ba0-70c1b3 */
 /* HSL */
 /* RGB */
+#postview__SinglePost___JI3LP {
+  margin: 0 auto;
+  border: 1px solid #4e9ad5;
+  padding: 16px;
+  margin: 10px;
+  box-shadow: 3px 3px 12px #3943B7;
+  text-align: center; }
+  #postview__SinglePost___JI3LP h3 {
+    padding: 6px; }
+
+#postview__PostImages___2HxrT {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex; }
+  #postview__PostImages___2HxrT div {
+    -webkit-box-flex: auto;
+    -moz-box-flex: auto;
+    -webkit-flex: auto;
+    -ms-flex: auto;
+    flex: auto;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-basis: 300px;
+    -moz-flex-basis: 300px;
+    -ms-flex-basis: 300px;
+    flex-basis: 300px;
+    background-color: #bfc0c0;
+    margin: 32px; }
+  #postview__PostImages___2HxrT img {
+    max-width: 300px; }
+@import url(https://fonts.googleapis.com/css?family=Raleway);/* Coolors Exported Palette - coolors.co/a0332f-fbfffa-e3e3e3-247ba0-70c1b3 */
+/* HSL */
+/* RGB */
 html {
   background-color: lightgray; }
 
@@ -118,40 +155,3 @@ nav.navbar.navbar-default ~ div {
 
 #style__NewPost___3Iqzc .style__fileUpload___2X6KZ input[type=file] {
   display: block; }
-@import url(https://fonts.googleapis.com/css?family=Raleway);/* Coolors Exported Palette - coolors.co/a0332f-fbfffa-e3e3e3-247ba0-70c1b3 */
-/* HSL */
-/* RGB */
-#postview__SinglePost___JI3LP {
-  margin: 0 auto;
-  border: 1px solid #4e9ad5;
-  padding: 16px;
-  margin: 10px;
-  box-shadow: 3px 3px 12px #3943B7;
-  text-align: center; }
-  #postview__SinglePost___JI3LP h3 {
-    padding: 6px; }
-
-#postview__PostImages___2HxrT {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex; }
-  #postview__PostImages___2HxrT div {
-    -webkit-box-flex: auto;
-    -moz-box-flex: auto;
-    -webkit-flex: auto;
-    -ms-flex: auto;
-    flex: auto;
-    -webkit-flex-direction: row;
-    -moz-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -webkit-flex-basis: 300px;
-    -moz-flex-basis: 300px;
-    -ms-flex-basis: 300px;
-    flex-basis: 300px;
-    background-color: #bfc0c0;
-    margin: 32px; }
-  #postview__PostImages___2HxrT img {
-    max-width: 300px; }
