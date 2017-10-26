@@ -14,20 +14,21 @@ class PostsIndex extends Component {
     this.props.fetchPosts();
   }
 
-  renderPosts(){
-    // console.log("Posts Index props : ", this.props);
-
-    return _.map(this.props.posts, post =>{
-      return (
-        <li className="list-group-item" key={post._id}>
-          <Link to={`/posts/${post._id}`}>
-            {post.title}
-          </Link>
-        <PostsShow {...post}/>
-        </li>
-      );
-    });
-
+  renderPosts(posts){
+    console.log('renderPosts posts =>?,', posts);
+    if (Object.keys(posts).length === 0) {
+      return (<div className={`container ${style.denied}`}>
+        <Panel header="There's a Problem!" bsStyle="danger">
+          <p>No Posts</p>
+        </Panel>
+      </div>)
+    }else{
+      return _.map(posts, post =>{
+        return (
+          <PostIndexItem post={post} />
+        );
+      });
+    }
   }
 
   newPostClick(){
@@ -51,33 +52,37 @@ class PostsIndex extends Component {
             {this.props.user.errorMessage}
           </Panel>
         </div>)
-    }else if (!this.props.posts.length) {
-      return (<div className={`container ${style.denied}`}>
-        <Panel header="There's a Problem!" bsStyle="danger">
-          <p>No Posts</p>
-        </Panel>
-      </div>)
-    }else{
-
-      return (<div>
-        <section id={style.postsIndex}>
-          <div className={style.postsHeader}>
-            <h3>Posts</h3>
-          </div>
-          <div className={style.postsList}>
-            <ul className="list-group">
-              {this.renderPosts()}
-            </ul>
-          </div>
-        </section>
-        <div>
-          {this.newPostClick()}
+    }
+  else{
+    return (<div>
+      <section id={style.postsIndex}>
+        <div className={style.postsHeader}>
+          <h3>Posts</h3>
         </div>
+        <div className={style.postsList}>
+          <ul className="list-group">
+            {this.renderPosts(this.props.posts)}
+          </ul>
+        </div>
+      </section>
+      <div>
+        {this.newPostClick()}
       </div>
-      );
+    </div>);
 
     }
   }
+}
+
+const PostIndexItem = post => {
+  return(
+    <li className="list-group-item" key={post._id}>
+      <Link to={`/posts/${post._id}`}>
+        {post.title}
+      </Link>
+        {post.body}
+    </li>
+  )
 }
 
 function mapStateToProps(state){
